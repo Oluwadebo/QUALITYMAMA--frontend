@@ -5,6 +5,10 @@ import axios from 'axios';
 import { baseUrl } from "./endpoint";
 import Navbar from './Navbar'
 import go5 from "./asset/go5.jfif"
+import stable1 from "./asset/stable1.jpg"
+import stable2 from "./asset/stable2.jpg"
+import stable3 from "./asset/stable3.jpg"
+import stable4 from "./asset/stable4.jpg"
 import sidebarbanner from "./asset/sidebar_banner_img.jpg"
 import caro1 from "./asset/caro1.jpg"
 import caro2 from "./asset/caro2.jpg"
@@ -20,11 +24,11 @@ import Footer from './Footer';
 
 const Dashboard = () => {
     const navigate = useNavigate();
-    // const [customers, setcustomers] = useState([])
+    const [customers, setcustomers] = useState([])
     const [files, setfiles] = useState([])
     // const [cart, setcart] = useState([])
-    // const customer = localStorage.customer;
-    // const customerId = localStorage.customerId;
+    const customer = localStorage.customer;
+    const customerId = localStorage.customerId;
 
     useEffect(() => {
         axios.get(`${baseUrl}goods`).then((data) => {
@@ -34,33 +38,33 @@ const Dashboard = () => {
         })
     }, [])
 
-    // const addtocart = (val) => {
-    //     if (customer) {
-    //         axios.get(`${baseUrl}dashboard`,
-    //             {
-    //                 headers: {
-    //                     "Authorization": `Bearer ${customer}`,
-    //                     "Content-type": "application/json",
-    //                     "Accept": "application/json"
-    //                 }
-    //             }).then((data) => {
-    //                 if (data) {
-    //                     let Err = data.data.message;
-    //                     if (Err == "Valid Token") {
-    //                         setcustomers(data.data.result[0]);
-    //                         localStorage.customerId = data.data.result[0]._id
-    //                         axios.post(`${baseUrl}addtocart`, { val, customerId })
-    //                     } else {
-    //                         localStorage.removeItem('customer')
-    //                         localStorage.removeItem('customerId')
-    //                         navigate("/Registration")
-    //                     }
-    //                 }
-    //             })
-    //     } else {
-    //         navigate("/Registration")
-    //     }
-    // }
+    const addtocart = (val) => {
+        if (customer) {
+            axios.get(`${baseUrl}dashboard`,
+                {
+                    headers: {
+                        "Authorization": `Bearer ${customer}`,
+                        "Content-type": "application/json",
+                        "Accept": "application/json"
+                    }
+                }).then((data) => {
+                    if (data) {
+                        let Err = data.data.message;
+                        if (Err == "Valid Token") {
+                            setcustomers(data.data.result[0]);
+                            localStorage.customerId = data.data.result[0]._id
+                            axios.post(`${baseUrl}addtocart`, { val, customerId })
+                        } else {
+                            localStorage.removeItem('customer')
+                            localStorage.removeItem('customerId')
+                            navigate("/Registration")
+                        }
+                    }
+                })
+        } else {
+            navigate("/Registration")
+        }
+    }
     const viewproduct = (val) => {
         if (val) {
             localStorage.Viewproduct = val
@@ -123,13 +127,13 @@ const Dashboard = () => {
                                 <div className="col-lg-3 col-md-6 my-3 mt-md-0">
                                     <div className="product-top">
                                         <div className="imgBx">
-                                            <img src={zoom3} className="h-100" alt='zoom' />
+                                            <img src={stable1} className="h-100" alt='zoom' />
                                             <div className="overlay-right">
                                                 <button type="button" className="btn btn-secondary" title="view product">
                                                     <i className="fa fa-eye"></i>
                                                 </button>
-                                                <button type="button" className="btn btn-secondary" title="Add to wish list">
-                                                    <i className="fa fa-heart"></i>
+                                                <button type="button" onClick={addtocart} className="btn btn-secondary" title="Add to Cart">
+                                                    <i className="fa fa-shopping-cart"></i>
                                                 </button>
                                             </div>
                                         </div>
@@ -148,13 +152,13 @@ const Dashboard = () => {
                                 <div className="col-lg-3 col-md-6 my-3 mt-md-0">
                                     <div className="product-top">
                                         <div className="imgBx">
-                                            <img src={go5} alt="zoom" />
+                                            <img src={stable2} alt="zoom" />
                                             <div className="overlay-right">
                                                 <button type="button" className="btn btn-secondary" title="view product">
                                                     <i className="fa fa-eye"></i>
                                                 </button>
-                                                <button type="button" className="btn btn-secondary" title="Add to wish list">
-                                                    <i className="fa fa-heart"></i>
+                                                <button type="button" onClick={addtocart} className="btn btn-secondary" title="Add to Cart">
+                                                    <i className="fa fa-shopping-cart"></i>
                                                 </button>
                                             </div>
                                         </div>
@@ -173,13 +177,13 @@ const Dashboard = () => {
                                 <div className="col-lg-3 col-md-6 my-3 mt-md-0">
                                     <div className="product-top">
                                         <div className="imgBx">
-                                            <img src={sidebarbanner} alt="zoom" />
+                                            <img src={stable3} alt="zoom" />
                                             <div className="overlay-right">
                                                 <button type="button" className="btn btn-secondary" title="view product">
                                                     <i className="fa fa-eye"></i>
                                                 </button>
-                                                <button type="button" className="btn btn-secondary" title="Add to wish list">
-                                                    <i className="fa fa-heart"></i>
+                                                <button type="button" onClick={addtocart} className="btn btn-secondary" title="Add to Cart">
+                                                    <i className="fa fa-shopping-cart"></i>
                                                 </button>
                                             </div>
                                         </div>
@@ -197,13 +201,13 @@ const Dashboard = () => {
                                 <div className="col-lg-3 col-md-6 my-3 mt-md-0">
                                     <div className="product-top">
                                         <div className="imgBx">
-                                            <img src={streetwear} alt="zoom" />
+                                            <img src={stable4} alt="zoom" />
                                             <div className="overlay-right">
                                                 <button type="button" className="btn btn-secondary" title="view product">
                                                     <i className="fa fa-eye"></i>
                                                 </button>
-                                                <button type="button" className="btn btn-secondary" title="Add to wish list">
-                                                    <i className="fa fa-heart"></i>
+                                                <button type="button" onClick={addtocart} className="btn btn-secondary" title="Add to Cart">
+                                                    <i className="fa fa-shopping-cart"></i>
                                                 </button>
                                             </div>
                                         </div>
@@ -238,8 +242,8 @@ const Dashboard = () => {
                                                     <button type="button" className="btn btn-secondary" onClick={() => viewproduct(item._id)} title="view product">
                                                         <i className="fa fa-eye"></i>
                                                     </button>
-                                                    <button type="button" className="btn btn-secondary" title="Add to wish list">
-                                                        <i className="fa fa-heart"></i>
+                                                    <button type="button" onClick={addtocart} className="btn btn-secondary" title="Add to Cart">
+                                                        <i className="fa fa-shopping-cart"></i>
                                                     </button>
                                                 </div>
                                             </div>
