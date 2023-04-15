@@ -14,12 +14,12 @@ const Navbar = () => {
         })
     }
 
-    // const logout = () => {
-    //     localStorage.removeItem('customer')
-    //     localStorage.removeItem('Admin')
-    //     localStorage.removeItem('adminId')
-    //     navigate("/")
-    // }
+    const logout = () => {
+        localStorage.removeItem('customer')
+        localStorage.removeItem('Admin')
+        localStorage.removeItem('adminId')
+        navigate("/")
+    }
     return (
         <>
             <div>
@@ -52,7 +52,7 @@ const Navbar = () => {
                                         <i className="fa fs-5 fa-dashboard mx-md-4 mx-3"> Home</i>
                                     </span>
                                 </Link>
-                                {/* <Link
+                                <Link
                                     to="/Admin"
                                     className='cart stye'
                                 >
@@ -62,7 +62,7 @@ const Navbar = () => {
                                 </Link>
                                 <span>
                                     <i className="fa fs-5 fa-sign-in mx-md-4 mx-3 my-3 my-md-0 stye" onClick={logout}> Log In </i>
-                                </span> */}
+                                </span>
                             </div>
                         </div>
                     </div>
