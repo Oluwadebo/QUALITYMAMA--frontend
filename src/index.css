@@ -213,12 +213,19 @@ code {
 }
 .feature-categories {
   margin: 50px 0;
+  overflow: hidden;
+  position: relative;
+  height: 70vh;
+  width: 100%;
 }
 .feature-categories img {
   width: 100%;
+  height: 100%;
   padding: 20px 0;
   transition: 1s;
   cursor: pointer;
+  object-fit: cover;
+  align-items: center;
 }
 .feature-categories img:hover {
   transform: scale(1.1);
@@ -256,7 +263,7 @@ code {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* object-fit: cover; */
 }
 @media only screen and (max-width: 700px) {
   .imggi {

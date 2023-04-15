@@ -6,13 +6,12 @@ import { baseUrl } from "./endpoint";
 import Navbar from './Navbar'
 import go5 from "./asset/go5.jfif"
 import sidebarbanner from "./asset/sidebar_banner_img.jpg"
-import caro from "./asset/caro4.jpg"
 import caro1 from "./asset/caro1.jpg"
 import caro2 from "./asset/caro2.jpg"
-import zoom from "./asset/zoom (1).jpg"
-import zoom1 from "./asset/zoom (2).jpg"
-import zoom3 from "./asset/zoom (4).jpg"
-import zoom4 from "./asset/zoom (5).jpg"
+import caro6 from "./asset/caro6.jpg"
+import zoom4 from "./asset/zoom4.jpg"
+import zoom3 from "./asset/zoom3.jpg"
+import zoom5 from "./asset/zoom5.jpg"
 import original from "./asset/original.png"
 import returnoninvestment from "./asset/return-on-investment.png"
 import debitcard from "./asset/debit-card.png"
@@ -82,17 +81,17 @@ const Dashboard = () => {
                     <div className="carousel-inner">
                         <div className="carousel-item active" data-bs-interval="2000">
                             <div className="imggi">
-                                <img src={caro} className="w-100" alt="..." />
-                            </div>
-                        </div>
-                        <div className="carousel-item" data-bs-interval="2000">
-                            <div className="imggi">
                                 <img src={caro1} className="w-100" alt="..." />
                             </div>
                         </div>
                         <div className="carousel-item" data-bs-interval="2000">
                             <div className="imggi">
                                 <img src={caro2} className="w-100" alt="..." />
+                            </div>
+                        </div>
+                        <div className="carousel-item" data-bs-interval="2000">
+                            <div className="imggi">
+                                <img src={caro6} className="w-100" alt="..." />
                             </div>
                         </div>
                     </div>
@@ -102,13 +101,13 @@ const Dashboard = () => {
                         <div className="container-fluid">
                             <div className="row">
                                 <div className="col-md-4">
-                                    <img src={zoom} alt="zoom" />
-                                </div>
-                                <div className="col-md-4">
                                     <img src={zoom4} alt="zoom" />
                                 </div>
                                 <div className="col-md-4">
-                                    <img src={zoom1} alt="zoom" />
+                                    <img src={zoom5} alt="zoom" />
+                                </div>
+                                <div className="col-md-4">
+                                    <img src={zoom3} alt="zoom" />
                                 </div>
                             </div>
                         </div>
