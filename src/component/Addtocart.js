@@ -12,37 +12,37 @@ const Addtocart = () => {
     const navigate = useNavigate();
     const [addtocart, setaddtocart] = useState([]);
     const [first, setfirst] = useState(true);
-    // useEffect(() => {
-    //     if (customer) {
-    //         axios.get(`${baseUrl}dashboard`,
-    //             {
-    //                 headers: {
-    //                     "Authorization": `Bearer ${customer}`,
-    //                     "Content-type": "application/json",
-    //                     "Accept": "application/json"
-    //                 }
-    //             }).then((data) => {
-    //                 if (data) {
-    //                     let Err = data.data.message;
-    //                     if (Err == "Valid Token") {
-    //                         axios.post(`${baseUrl}getaddtocart`, { id: customerId }).then((data) => {
-    //                             if (data) {
-    //                                 setaddtocart(data.data.result);
-    //                                 setfirst(prev => false)
-    //                             }
-    //                         })
-    //                     } else {
-    //                         localStorage.removeItem('customer')
-    //                         localStorage.removeItem('customerId')
-    //                         navigate("/Registration")
-    //                     }
-    //                 }
-    //             })
-    //     } else {
-    //         navigate("/Registration")
-    //     }
+    useEffect(() => {
+        if (customer) {
+            axios.get(`${baseUrl}dashboard`,
+                {
+                    headers: {
+                        "Authorization": `Bearer ${customer}`,
+                        "Content-type": "application/json",
+                        "Accept": "application/json"
+                    }
+                }).then((data) => {
+                    if (data) {
+                        let Err = data.data.message;
+                        if (Err == "Valid Token") {
+                            axios.post(`${baseUrl}getaddtocart`, { id: customerId }).then((data) => {
+                                if (data) {
+                                    setaddtocart(data.data.result);
+                                    setfirst(prev => false)
+                                }
+                            })
+                        } else {
+                            localStorage.removeItem('customer')
+                            localStorage.removeItem('customerId')
+                            navigate("/Registration")
+                        }
+                    }
+                })
+        } else {
+            navigate("/Registration")
+        }
 
-    // }, [])
+    }, [])
 
     const remove = (val) => {
         axios.post(`${baseUrl}removeaddtocart`, { id: val }).then((data) => {

@@ -100,7 +100,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className="">
+                <div className="px-3">
                     <section className="feature-categories">
                         <div className="container-fluid">
                             <div className="row">
@@ -117,7 +117,7 @@ const Dashboard = () => {
                         </div>
                     </section>
                 </div>
-                <div className=" onsale">
+                <div className="px-3 onsale">
                     <section className="on-sale">
                         <div className="container-fluid">
                             <div className="title-box">
@@ -126,15 +126,9 @@ const Dashboard = () => {
                             <div className="row">
                                 <div className="col-lg-3 col-md-6 my-3 mt-md-0">
                                     <div className="product-top">
-                                        <div className="imgBx">
-                                            <img src={stable1} className="h-100" alt='zoom' />
-                                            <div className="overlay-right">
-                                                <button type="button" className="btn btn-secondary" title="view product">
-                                                    <i className="fa fa-eye"></i>
-                                                </button>
-                                                <button type="button" onClick={addtocart} className="btn btn-secondary" title="Add to Cart">
-                                                    <i className="fa fa-shopping-cart"></i>
-                                                </button>
+                                        <div className="" onClick={() => viewproduct()}>
+                                            <div className="imgBx">
+                                                <img src={stable1} className="h-100" alt='zoom' />
                                             </div>
                                         </div>
                                     </div>
@@ -145,21 +139,13 @@ const Dashboard = () => {
                                         <i className="fa fa-star"></i>
                                         <i className="fa fa-star-half"></i>
                                         <h3>HeadPhone</h3>
-                                        <h5>$40.00</h5>
-                                        <button type="submit" className="default-btn btn-bg-two"><a href="#">Shop Now</a></button>
                                     </div>
                                 </div>
                                 <div className="col-lg-3 col-md-6 my-3 mt-md-0">
                                     <div className="product-top">
-                                        <div className="imgBx">
-                                            <img src={stable2} alt="zoom" />
-                                            <div className="overlay-right">
-                                                <button type="button" className="btn btn-secondary" title="view product">
-                                                    <i className="fa fa-eye"></i>
-                                                </button>
-                                                <button type="button" onClick={addtocart} className="btn btn-secondary" title="Add to Cart">
-                                                    <i className="fa fa-shopping-cart"></i>
-                                                </button>
+                                        <div className="" onClick={() => viewproduct()}>
+                                            <div className="imgBx">
+                                                <img src={stable2} className="h-100" alt='zoom' />
                                             </div>
                                         </div>
                                     </div>
@@ -170,21 +156,13 @@ const Dashboard = () => {
                                         <i className="fa fa-star"></i>
                                         <i className="fa fa-star"></i>
                                         <h3>Men Dress</h3>
-                                        <h5>$70.00</h5>
-                                        <button type="submit" className="default-btn btn-bg-two"><a href="#">Shop Now</a></button>
                                     </div>
                                 </div>
                                 <div className="col-lg-3 col-md-6 my-3 mt-md-0">
                                     <div className="product-top">
-                                        <div className="imgBx">
-                                            <img src={stable3} alt="zoom" />
-                                            <div className="overlay-right">
-                                                <button type="button" className="btn btn-secondary" title="view product">
-                                                    <i className="fa fa-eye"></i>
-                                                </button>
-                                                <button type="button" onClick={addtocart} className="btn btn-secondary" title="Add to Cart">
-                                                    <i className="fa fa-shopping-cart"></i>
-                                                </button>
+                                        <div className="" onClick={() => viewproduct()}>
+                                            <div className="imgBx">
+                                                <img src={stable3} className="h-100" alt='zoom' />
                                             </div>
                                         </div>
                                     </div>
@@ -194,21 +172,13 @@ const Dashboard = () => {
                                         <i className="fa fa-star"></i>
                                         <i className="fa fa-star"></i>
                                         <h3>Women Dress</h3>
-                                        <h5>$60.00</h5>
-                                        <button type="submit" className="default-btn btn-bg-two"><a href="#">Shop Now</a></button>
                                     </div>
                                 </div>
                                 <div className="col-lg-3 col-md-6 my-3 mt-md-0">
                                     <div className="product-top">
-                                        <div className="imgBx">
-                                            <img src={stable4} alt="zoom" />
-                                            <div className="overlay-right">
-                                                <button type="button" className="btn btn-secondary" title="view product">
-                                                    <i className="fa fa-eye"></i>
-                                                </button>
-                                                <button type="button" onClick={addtocart} className="btn btn-secondary" title="Add to Cart">
-                                                    <i className="fa fa-shopping-cart"></i>
-                                                </button>
+                                        <div className="" onClick={() => viewproduct()}>
+                                            <div className="imgBx">
+                                                <img src={stable4} className="h-100" alt='zoom' />
                                             </div>
                                         </div>
                                     </div>
@@ -218,15 +188,13 @@ const Dashboard = () => {
                                         <i className="fa fa-star"></i>
                                         <i className="fa fa-star-half"></i>
                                         <h3>Street wear design t-shirt</h3>
-                                        <h5>$50.00</h5>
-                                        <button type="submit" className="default-btn btn-bg-two"><a href="#">Shop Now</a></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
                 </div>
-                <div className="new-product">
+                <div className="px-3 new-product">
                     <section className="new-product">
                         <div className="container-fluid">
                             <div className="title-box">
@@ -236,20 +204,13 @@ const Dashboard = () => {
                                 {files.map((item, index) => (
                                     <div className="col-lg-3 col-md-6 my-3 mt-md-0">
                                         <div className="product-top">
-                                            <div className="imgBx">
-                                                <img src={item.file} className="h-100" alt='zoom' />
-                                                <div className="overlay-right">
-                                                    <button type="button" className="btn btn-secondary" onClick={() => viewproduct(item._id)} title="view product">
-                                                        <i className="fa fa-eye"></i>
-                                                    </button>
-                                                    <button type="button" onClick={addtocart} className="btn btn-secondary" title="Add to Cart">
-                                                        <i className="fa fa-shopping-cart"></i>
-                                                    </button>
+                                            <div className="" onClick={() => viewproduct(item._id)}>
+                                                <div className="imgBx">
+                                                    <img src={item.file} className="h-100" alt='zoom' />
                                                 </div>
                                             </div>
                                             <div className="product-botttom text-center mt-3">
-                                                <h3><span className='float1'>{item.product}</span> <span className='float2'>{item.price}</span></h3><br /><br />
-                                                <button type="submit" className="default-btn btn-bg-two"><a href={item.Link}>Shop Now</a></button>
+                                                <h3>{item.product}</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -258,7 +219,7 @@ const Dashboard = () => {
                         </div>
                     </section>
                 </div>
-                <div className="website-feature">
+                <div className="px-3 website-feature">
                     <section className="website-feature">
                         <div className="container-fluid">
                             <div className="row">
