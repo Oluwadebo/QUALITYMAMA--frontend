@@ -53,6 +53,14 @@ const Navbar = () => {
                                     </span>
                                 </Link>
                                 <Link
+                                    to="/Addtocart"
+                                    className='cart stye'
+                                >
+                                    <span>
+                                        <i className="fa fs-5 fa-shopping-basket mx-md-4 mx-3"> Cart </i>
+                                    </span>
+                                </Link>
+                                <Link
                                     to="/Admin"
                                     className='cart stye'
                                 >
