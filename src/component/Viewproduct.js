@@ -52,7 +52,7 @@ const Viewproduct = () => {
                                         </div>
                                         <h2>{item.product}</h2>
                                         <p>Product Code: {item._id}</p>
-                                        <h5 className='float'>{item.description}</h5>
+                                        <h5 className='float'>{item.description} hdjhdbc</h5>
                                         <i className="fa fa-star"></i>
                                         <i className="fa fa-star"></i>
                                         <i className="fa fa-star"></i>

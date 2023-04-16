@@ -1,9 +1,9 @@
 import { io } from "socket.io-client";
 let baseUrl;
 if (process.env.NODE_ENV == 'production') {
-	baseUrl = 'https://lovelymart.onrender.com/';
+	baseUrl = 'http://localhost:5020/';
 } else {
-	baseUrl = 'http://localhost:5010/';
+	baseUrl = 'http://localhost:5020/';
 }
 // const socket = io(baseUrl)
 export { baseUrl };

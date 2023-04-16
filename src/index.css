@@ -46,16 +46,7 @@ code {
   border-left: 16px solid #227bf7;
   width: 40px;
   height: 40px;
-  -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
-}
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
 }
 @keyframes spin {
   0% {
@@ -117,7 +108,7 @@ code {
 }
 .spin {
   float: right;
-  animation: mo 2s infinite alternate;
+  /* animation: mo 2s infinite alternate; */
 }
 @keyframes mo {
   0% {

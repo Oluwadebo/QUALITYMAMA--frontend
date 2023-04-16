@@ -27,17 +27,19 @@ const Upload = () => {
     setSelectedOption(selectedOpt.value);
   };
   const upload = () => {
-    if (file != "" && product != "" && price != "" && selectedOption != "" && description != "" && Link != "") {
+    if (file != "" && product != "" && price != "" && selectedOption != "" && description != "") {
       setErr("")
       setloader(prev => true)
-      const userdata = { file, product, price, adminId, selectedOption, Link, description }
+      const userdata = { file, product, price, adminId, selectedOption, description }
       axios.post(`${baseUrl}files`, userdata).then((credentials) => {
         if (credentials) {
           let info = credentials.data.message;
           if (info == "Upload successfuly") {
             setloader(prev => false)
             setErr("Upload successfuly")
-            // window.location.reload()
+            setTimeout(() => {
+              window.location.reload()
+          }, 2000);
           } else {
             setloader(prev => false)
             setErr("Upload failed")
@@ -46,7 +48,7 @@ const Upload = () => {
       })
     } else {
       setloader(prev => false)
-      if (file == "" && product == "" && price == "" && selectedOption == "" && description == "" && Link == "") {
+      if (file == "" && product == "" && price == "" && selectedOption == "" && description == "") {
         setErr("All input field are required")
       } else if (file == "") {
         setErr("file input field is required")
@@ -65,9 +67,9 @@ const Upload = () => {
       }
     }
   }
-  const Reset = () => {
-    window.location.reload()
-  }
+  // const Reset = () => {
+  //   window.location.reload()
+  // }
   return (
     <>
       <div className="container">
@@ -100,7 +102,7 @@ const Upload = () => {
                 <option value="pet-supplies">pet-supplies</option>
                 <option value="hand-made">hand-made</option>
               </select>
-              <input type="url" className="form-control my-2" placeholder="Product Link" onChange={(e) => setLink(e.target.value)} />
+              {/* <input type="url" className="form-control my-2" placeholder="Product Link" onChange={(e) => setLink(e.target.value)} /> */}
               <button className="btn form-control py-3 mt-3 asdb" onClick={upload}>Upload
                 {loader && (
                   <div className="spin">
@@ -108,7 +110,7 @@ const Upload = () => {
                   </div>
                 )}
               </button>
-              <button type="reset" className="btn form-control py-3 mt-3 asdb" onClick={Reset}>Reset</button>
+              {/* <button type="reset" className="btn form-control py-3 mt-3 asdb" onClick={Reset}>Reset</button> */}
             </div>
           </div>
         </div>
