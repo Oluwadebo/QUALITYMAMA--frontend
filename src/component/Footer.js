@@ -40,17 +40,18 @@ const Footer = () => {
                                 <h1>Useful Links</h1>
                                 <p><span className='priv' onClick={priv} >Privacy Policy</span> <br />
                                     {privacy && (
-                                        <span className='test'>vbdgnfbdnshmdbnsjdsbc sjhcbvc jbcnmsn,sjs shsvdhsnd</span>
+                                        <span className='test'>We respect your privacy and are committed to protecting your personal information. We may collect contact and payment information to process orders and improve our services. We will not share your information with third parties except as necessary to provide services or as required by law. You may opt out of promotional emails and request deletion of personal information. Our full privacy policy can be found on our website. or <br /> please contact us at Stackcraft@gmail.com.
+                                        </span>
                                     )}
                                 </p>
                                 <p><span className='priv' onClick={Ter} >Term of Use</span> <br />
                                     {Term && (
-                                        <span className='test'>vbdgnfbdnshmdbnsjdsbc </span>
+                                        <span className='test'>By using our ecommerce site, you agree to our terms of use. You must be 18 years or older to use our site. All content, including images, belongs to us or our partners. We are not liable for damages or losses caused by using our site or products. We reserve the right to change prices and products at any time. Please contact us with any concerns or questions.</span>
                                     )}
                                 </p>
                                 <p><span className='priv' onClick={Retur} >Return Policy</span> <br />
                                     {Return && (
-                                        <span className='test'>jbcnmsn,sjs shsvdhsnd</span>
+                                        <span className='test'>We offer a 30-day return policy on all items purchased from our website. Items must be in their original packaging and unused condition. To initiate a return, please contact our customer support team. Shipping charges are non-refundable.</span>
                                     )}
                                 </p>
                             </div>
