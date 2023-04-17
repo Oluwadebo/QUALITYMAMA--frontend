@@ -79,7 +79,7 @@ const Viewproduct = () => {
     const viewproduct = (val) => {
         if (val) {
             localStorage.Viewproduct = val
-            navigate("/Viewproduct")
+            window.location.reload()
         }
     }
 

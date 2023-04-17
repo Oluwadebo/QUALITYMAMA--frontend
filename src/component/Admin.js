@@ -92,7 +92,7 @@ const Admin = () => {
                                                         <img src={item.file} className="h-100" />
                                                     </div>
                                                     <div className="product-botttom mt-2">
-                                                        <h3><span className='float1'>{item.product}</span> <span  className='float2'>{item.price}</span></h3><br />
+                                                        <h3><span className='float1'>{item.product}</span> <span className='float2'>{item.price}</span></h3><br />
                                                         <h5 className='float'>{item.description}</h5>
                                                     </div>
                                                     <div className="row">
