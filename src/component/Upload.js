@@ -39,7 +39,7 @@ const Upload = () => {
             setErr("Upload successfuly")
             setTimeout(() => {
               window.location.reload()
-          }, 2000);
+            }, 5000);
           } else {
             setloader(prev => false)
             setErr("Upload failed")

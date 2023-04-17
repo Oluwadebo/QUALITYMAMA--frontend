@@ -27,6 +27,7 @@ const Addtocart = () => {
                         if (Err == "Valid Token") {
                             axios.post(`${baseUrl}getaddtocart`, { id: customerId }).then((data) => {
                                 if (data) {
+                                    console.log(data.data.result);
                                     setaddtocart(data.data.result);
                                     setfirst(prev => false)
                                 }
