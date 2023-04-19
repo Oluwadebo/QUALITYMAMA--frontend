@@ -12,6 +12,9 @@ const Navbar = () => {
     const [dis, setdis] = useState(false)
     const [searchInput, setSearchInput] = useState('');
     const [files, setfiles] = useState([])
+    const [first, setfirst] = useState(false)
+    const customer = localStorage.customer;
+
     // const [filteredProducts, setfilteredProducts] = useState([])
 
     const scrollup = () => {
@@ -22,6 +25,9 @@ const Navbar = () => {
     }
 
     useEffect(() => {
+        if (customer) {
+            setfirst(prev => true)
+        }
         axios.get(`${baseUrl}goods`).then((data) => {
             if (data) {
                 setfiles(data.data.result);
@@ -33,6 +39,7 @@ const Navbar = () => {
         const filteredProduct = files.filter((val) =>
             val.product.toLowerCase().includes(searchInput.toLowerCase())
         );
+        console.log(filteredProduct);
         // setfilteredProducts(filteredProduct)
         settop(filteredProduct.map((val, index) => {
             return (val.file)
@@ -44,7 +51,7 @@ const Navbar = () => {
         localStorage.removeItem('customer')
         localStorage.removeItem('Admin')
         localStorage.removeItem('adminId')
-        navigate("/")
+        navigate("/Registration")
     }
     return (
         <>
@@ -86,17 +93,24 @@ const Navbar = () => {
                                         <i className="fa fs-5 fa-shopping-basket mx-md-4 mx-3"> Cart </i>
                                     </span>
                                 </Link>
-                                <Link
+                                {/* <Link
                                     to="/Admin"
                                     className='cart stye'
                                 >
                                     <span>
                                         <i className="fa fs-5 fa-address-card mx-md-4 mx-3"> Admin </i>
                                     </span>
-                                </Link>
-                                <span>
-                                    <i className="fa fs-5 fa-sign-in mx-md-4 mx-3 my-3 my-md-0 stye" onClick={logout}> Log In </i>
-                                </span>
+                                </Link> */}
+                                {!first && (
+                                    <span>
+                                        <i className="fa fs-5 fa-sign-in mx-md-4 mx-3 my-3 my-md-0 stye" onClick={logout}> Log In </i>
+                                    </span>
+                                )}
+                                {first && (
+                                    <span>
+                                        <i className="fa fs-5 fa-sign-out mx-md-4 mx-3 my-3 my-md-0 stye" onClick={logout}> Log Out </i>
+                                    </span>
+                                )}
                             </div>
                         </div>
                     </div>

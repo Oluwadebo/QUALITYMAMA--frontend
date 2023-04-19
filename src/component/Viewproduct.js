@@ -112,9 +112,9 @@ const Viewproduct = () => {
                                         <i className="fa fa-star"></i>
                                         <i className="fa fa-star"></i>
                                         <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
+                                        <i className="fa fa-star"></i> <br /><br />
                                         <h5 className='float'> {item.description}</h5>
-                                        <p className="price"><b>₦</b>{item.price}</p>
+                                        <p className="price"><b>₦</b> {item.price}</p>
                                         <button type="button" className="default-btn btn-bg-two" onClick={() => addtocart(item._id)}>Add to Cart</button>
                                         {/* <button type="submit" className="default-btn btn-bg-two"><a href={item.Link}>Add to Cart</a></button> */}
                                     </div>
@@ -125,7 +125,7 @@ const Viewproduct = () => {
                     <div className="px-2 new-product">
                         <div className="container-fluid">
                             <div className="title-box">
-                                <h2 className='text-white'>Similarity</h2>
+                                <h2 className='text-white'>Similar Product</h2>
                             </div>
                             <div className="row">
                                 {files.map((item, index) => (

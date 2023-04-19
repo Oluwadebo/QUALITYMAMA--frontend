@@ -57,6 +57,14 @@ const Addtocart = () => {
 
     const display = () => {
         if (sum > 0) {
+            if (customer) {
+                const send = addtocart.forEach((val, index) => {
+                    const price = val.price;
+                    const product = val.product;
+                    console.log(price,product);
+                });
+                // axios.post(`${baseUrl}adminsignup`,)
+            }
             setdis(prev => true)
             setTimeout(() => {
                 setdis(prev => false)
@@ -157,7 +165,7 @@ const Addtocart = () => {
                                     </div>
                                     <div className="card p-2 mt-1">
                                         <h5>Returns are easy</h5>
-                                        <p>Free return within 7 days for other eligible items</p>
+                                        <p>Free return within 24 hours for other eligible items</p>
                                     </div>
                                 </div>
                             </div>
