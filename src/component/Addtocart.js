@@ -12,7 +12,10 @@ const Addtocart = () => {
     const navigate = useNavigate();
     const [addtocart, setaddtocart] = useState([]);
     const [first, setfirst] = useState(true);
-    const [car, setcar] = useState()
+    const [car, setcar] = useState();
+    const [dis, setdis] = useState(false)
+    const [copied, setCopied] = useState(false);
+
 
     let sum = 0;
     useEffect(() => {
@@ -51,6 +54,24 @@ const Addtocart = () => {
     const total = addtocart.forEach((val, index) => {
         sum = sum + parseFloat(val.price)
     });
+
+    const display = () => {
+        if (sum > 0) {
+            setdis(prev => true)
+            setTimeout(() => {
+                setdis(prev => false)
+            }, 60000);
+        }
+    }
+
+    const handleClick = () => {
+        const textToCopy = 1664848694;
+        navigator.clipboard.writeText(textToCopy);
+        setCopied(true);
+        setTimeout(() => {
+            setCopied(false);
+        }, 2000);
+    }
 
     const remove = (val) => {
         axios.post(`${baseUrl}removeaddtocart`, { id: val }).then((data) => {
@@ -123,7 +144,15 @@ const Addtocart = () => {
                                             <p>Delivery fees not included yet.</p>
                                         </div>
                                         <div className="card p-2">
-                                            <button type="button" className="default-btn btn-bg-two">CHECKOUT (₦ {sum})</button>
+                                            <button type="button" className="default-btn btn-bg-two" onClick={display}>CHECKOUT (₦ {sum})</button>
+                                            {dis && (
+                                                <div className="card mt-1 p-1">
+                                                    <h4>1664848694 <span style={{ float: 'right', }}><button className='butt mx-1' onClick={handleClick}>
+                                                        {copied ? 'Copied!' : <i class="fa fa-copy"></i>}
+                                                    </button></span> <br /> ACCESS BANK <br /> OGUNWE DEBO</h4>
+                                                    <button type="button" className="default-btn btn-bg-two" ><a href="https://wa.me/2349044796430" className='text-white'>Confirm transaction</a></button>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                     <div className="card p-2 mt-1">
