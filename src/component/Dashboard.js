@@ -4,12 +4,10 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import { baseUrl } from "./endpoint";
 import Navbar from './Navbar'
-import go5 from "./asset/go5.jfif"
 import stable1 from "./asset/stable1.jpg"
 import stable2 from "./asset/stable2.jpg"
 import stable3 from "./asset/stable3.jpg"
 import stable4 from "./asset/stable4.jpg"
-import sidebarbanner from "./asset/sidebar_banner_img.jpg"
 import caro1 from "./asset/caro1.jpg"
 import caro2 from "./asset/caro2.jpg"
 import caro6 from "./asset/caro6.jpg"
@@ -19,16 +17,14 @@ import zoom5 from "./asset/zoom5.jpg"
 import original from "./asset/original.png"
 import returnoninvestment from "./asset/return-on-investment.png"
 import debitcard from "./asset/debit-card.png"
-import streetwear from "./asset/street wear design t-shirt.jpg"
 import Footer from './Footer';
 
 const Dashboard = () => {
     const navigate = useNavigate();
-    const [customers, setcustomers] = useState([])
+    // const [customers, setcustomers] = useState([])
     const [files, setfiles] = useState([])
-    // const [cart, setcart] = useState([])
-    const customer = localStorage.customer;
-    const customerId = localStorage.customerId;
+    // const customer = localStorage.customer;
+    // const customerId = localStorage.customerId;
 
     useEffect(() => {
         axios.get(`${baseUrl}goods`).then((data) => {
@@ -38,33 +34,6 @@ const Dashboard = () => {
         })
     }, [])
 
-    const addtocart = (val) => {
-        if (customer) {
-            axios.get(`${baseUrl}dashboard`,
-                {
-                    headers: {
-                        "Authorization": `Bearer ${customer}`,
-                        "Content-type": "application/json",
-                        "Accept": "application/json"
-                    }
-                }).then((data) => {
-                    if (data) {
-                        let Err = data.data.message;
-                        if (Err == "Valid Token") {
-                            setcustomers(data.data.result[0]);
-                            localStorage.customerId = data.data.result[0]._id
-                            axios.post(`${baseUrl}addtocart`, { val, customerId })
-                        } else {
-                            localStorage.removeItem('customer')
-                            localStorage.removeItem('customerId')
-                            navigate("/Registration")
-                        }
-                    }
-                })
-        } else {
-            navigate("/Registration")
-        }
-    }
     const viewproduct = (val) => {
         if (val) {
             localStorage.Viewproduct = val

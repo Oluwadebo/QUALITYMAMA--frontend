@@ -31,7 +31,6 @@ const Addtocart = () => {
                             axios.post(`${baseUrl}getaddtocart`, { id: customerId }).then((data) => {
                                 if (data) {
                                     const da = data.data.result;
-
                                     setaddtocart(da);
                                     setcar(da.length);
                                     setfirst(prev => false)
@@ -52,12 +51,6 @@ const Addtocart = () => {
     const total = addtocart.forEach((val, index) => {
         sum = sum + parseFloat(val.price)
     });
-    // useEffect(() => {
-    //     const total = addtocart.reduce((accumulator, product) => {
-    //         console.log(accumulator + product.price);
-    //     }, 0);
-    // }, [])
-
 
     const remove = (val) => {
         axios.post(`${baseUrl}removeaddtocart`, { id: val }).then((data) => {
@@ -95,7 +88,7 @@ const Addtocart = () => {
                                                                     <h4>{item.product}</h4>
                                                                 </div>
                                                                 <div className="col-3">
-                                                                    <h4 className='px-3' style={{ float: 'right', }}><b>₦</b> {item.price}</h4>
+                                                                    <h4 className='px-3 pt-3' style={{ float: 'right', }}><b>₦</b> {item.price}</h4>
                                                                 </div>
                                                                 <div className="col-12 sd">
                                                                     <i className='px-3 fa fa-trash' onClick={() => remove(item._id)}> REMOVE</i>

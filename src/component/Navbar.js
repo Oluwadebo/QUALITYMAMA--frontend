@@ -3,15 +3,41 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import amaricanexpress from "./asset/amarican_express.png"
 import logo from "./asset/logo.png"
+import axios from 'axios';
+import { baseUrl } from "./endpoint";
 
 const Navbar = () => {
     const navigate = useNavigate();
-    const [top, settop] = useState(false)
+    const [top, settop] = useState("")
+    const [dis, setdis] = useState(false)
+    const [searchInput, setSearchInput] = useState('');
+    const [files, setfiles] = useState([])
+    // const [filteredProducts, setfilteredProducts] = useState([])
+
     const scrollup = () => {
         window.scrollTo({
             top: 0,
             behavior: "smooth"
         })
+    }
+
+    useEffect(() => {
+        axios.get(`${baseUrl}goods`).then((data) => {
+            if (data) {
+                setfiles(data.data.result);
+            }
+        })
+    }, [])
+
+    const handleSearch = () => {
+        const filteredProduct = files.filter((val) =>
+            val.product.toLowerCase().includes(searchInput.toLowerCase())
+        );
+        // setfilteredProducts(filteredProduct)
+        settop(filteredProduct.map((val, index) => {
+            return (val.file)
+        }));
+        setdis(prev => true)
     }
 
     const logout = () => {
@@ -40,8 +66,8 @@ const Navbar = () => {
                         </button>
                         <div className="collapse navbar-collapse" id="navbarText">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                                <input type="text" className="form-control sty d-none d-md-block cash" placeholder='search' />
-                                <span className="input-group-text d-none d-md-block"><i className="fa fa-search"></i></span>
+                                <input type="text" className="form-control sty d-none d-md-block cash" placeholder='search' onChange={(e) => setSearchInput(e.target.value)} />
+                                <span className="input-group-text d-none d-md-block" onClick={handleSearch}><i className="fa fa-search"></i></span>
                             </ul>
                             <div className="col-12 col-md-8 text-md-end">
                                 <Link
