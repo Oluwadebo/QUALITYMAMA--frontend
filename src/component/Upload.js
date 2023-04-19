@@ -87,7 +87,7 @@ const Upload = () => {
               <input type="file" className="form-control my-2" onChange={(e) => getfile(e)} accept='image/*' />
               <input type="text" className="form-control my-2" placeholder="Product name" onChange={(e) => setproduct(e.target.value)} />
               <input type="text" className="form-control my-2" placeholder="Product description" onChange={(e) => setdescription(e.target.value)} />
-              <input type="text" className="form-control my-2" placeholder="Product price (add your currency)" onChange={(e) => setprice(e.target.value)} />
+              <input type="text" className="form-control my-2" placeholder="Product price" onChange={(e) => setprice(e.target.value)} />
               <select id="selectOptions" className="select" value={selectedOption} onChange={(e) => handleSelectChange(e)}>
                 <option value="">Select your Category</option>
                 <option value="clothing">clothing</option>

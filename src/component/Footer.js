@@ -51,7 +51,7 @@ const Footer = () => {
                                 </p>
                                 <p><span className='priv' onClick={Retur} >Return Policy</span> <br />
                                     {Return && (
-                                        <span className='test'>We offer a 30-day return policy on all items purchased from our website. Items must be in their original packaging and unused condition. To initiate a return, please contact our customer support team. Shipping charges are non-refundable.</span>
+                                        <span className='test'>We offer a 10-day return policy on all items purchased from our website. Items must be in their original packaging and unused condition. To initiate a return, please contact our customer support team. Shipping charges are non-refundable.</span>
                                     )}
                                 </p>
                             </div>
