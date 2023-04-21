@@ -17,13 +17,13 @@ code {
   color: darkblue;
 }
 .asd {
-  background: rgba(10, 40, 122, 0.808);
+  background: #2196f3;
   backdrop-filter: blur(5px);
   border-radius: 10px;
   border: none;
 }
 .asdb {
-  background: rgba(10, 40, 122, 0.808);
+  background: rgb(0, 132, 255);
   backdrop-filter: blur(5px);
   border-radius: 10px;
   border: none;
@@ -129,7 +129,7 @@ code {
 }
 .scr {
   position: fixed;
-  background: #1e4174;
+  background: #056fc5;
   border-radius: 10px;
   border: 0px;
   color: #fff;
@@ -217,7 +217,7 @@ code {
   transform: scale(1.1);
 }
 .title-box {
-  background-color: #16325a;
+  background-color: #2196f3;
   color: #fff;
   width: 180px;
   padding: 4px 10px;
@@ -230,7 +230,7 @@ code {
 }
 .title-box::after {
   content: "";
-  border-top: 40px solid #16325a;
+  border-top: 40px solid #2196f3;
   border-right: 50px solid transparent;
   position: absolute;
   display: flex;
@@ -256,6 +256,19 @@ code {
     height: 40vh;
     background-position: center;
   }
+}
+.product-to .imgBx {
+  position: relative;
+  height: 70vh;
+  width: 100%;
+}
+.product-to .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .product-top .imgBx {
   position: relative;

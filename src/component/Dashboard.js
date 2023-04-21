@@ -23,6 +23,8 @@ const Dashboard = () => {
     const navigate = useNavigate();
     // const [customers, setcustomers] = useState([])
     const [files, setfiles] = useState([])
+    const [sale, setsale] = useState([])
+    const [fashion, setfashion] = useState([])
     // const customer = localStorage.customer;
     // const customerId = localStorage.customerId;
 
@@ -30,6 +32,18 @@ const Dashboard = () => {
         axios.get(`${baseUrl}goods`).then((data) => {
             if (data) {
                 setfiles(data.data.result);
+                let Onsale = "Onsale"
+                axios.post(`${baseUrl}onsale`, { Onsale }).then((data) => {
+                    if (data) {
+                        setsale(data.data.result)
+                        let fashio = "fashion"
+                        axios.post(`${baseUrl}fashion`, { fashio }).then((data) => {
+                            if (data) {
+                                setfashion(data.data.result)
+                            }
+                        })
+                    }
+                })
             }
         })
     }, [])
@@ -73,15 +87,17 @@ const Dashboard = () => {
                     <section className="feature-categories">
                         <div className="container-fluid">
                             <div className="row">
-                                <div className="col-md-4">
-                                    <img src={zoom4} alt="zoom" />
-                                </div>
-                                <div className="col-md-4">
-                                    <img src={zoom5} alt="zoom" />
-                                </div>
-                                <div className="col-md-4">
-                                    <img src={zoom3} alt="zoom" />
-                                </div>
+                                {fashion.map((item, index) => (
+                                    <div className="col-lg-4 col-md-6 my-3 mt-md-0">
+                                        <div className="product-to">
+                                            <div className="" onClick={() => viewproduct(item._id)}>
+                                                <div className="imgBx">
+                                                    <img src={item.file} className="h-100" alt='zoom' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </section>
@@ -93,72 +109,20 @@ const Dashboard = () => {
                                 <h2>On Sale</h2>
                             </div>
                             <div className="row">
-                                <div className="col-lg-3 col-md-6 my-3 mt-md-0">
-                                    <div className="product-top">
-                                        <div className="" onClick={() => viewproduct()}>
-                                            <div className="imgBx">
-                                                <img src={stable1} className="h-100" alt='zoom' />
+                                {sale.map((item, index) => (
+                                    <div className="col-lg-3 col-md-6 my-3 mt-md-0">
+                                        <div className="product-top">
+                                            <div className="" onClick={() => viewproduct(item._id)}>
+                                                <div className="imgBx">
+                                                    <img src={item.file} className="h-100" alt='zoom' />
+                                                </div>
+                                            </div>
+                                            <div className="product-botttom text-center mt-3">
+                                                <h3>{item.product}</h3>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="product-botttom text-center">
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star-half"></i>
-                                        <h3>HeadPhone</h3>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3 col-md-6 my-3 mt-md-0">
-                                    <div className="product-top">
-                                        <div className="" onClick={() => viewproduct()}>
-                                            <div className="imgBx">
-                                                <img src={stable2} className="h-100" alt='zoom' />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="product-botttom text-center">
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <h3>Men Dress</h3>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3 col-md-6 my-3 mt-md-0">
-                                    <div className="product-top">
-                                        <div className="" onClick={() => viewproduct()}>
-                                            <div className="imgBx">
-                                                <img src={stable3} className="h-100" alt='zoom' />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="product-botttom text-center">
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <h3>Women Dress</h3>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3 col-md-6 my-3 mt-md-0">
-                                    <div className="product-top">
-                                        <div className="" onClick={() => viewproduct()}>
-                                            <div className="imgBx">
-                                                <img src={stable4} className="h-100" alt='zoom' />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="product-botttom text-center">
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star-half"></i>
-                                        <h3>Street wear design t-shirt</h3>
-                                    </div>
-                                </div>
+                                ))}
                             </div>
                         </div>
                     </section>

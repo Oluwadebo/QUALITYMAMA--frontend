@@ -15,6 +15,7 @@ const Addtocart = () => {
     const [car, setcar] = useState();
     const [dis, setdis] = useState(false)
     const [copied, setCopied] = useState(false);
+    const [ifo, setifo] = useState([])
 
 
     let sum = 0;
@@ -31,6 +32,7 @@ const Addtocart = () => {
                     if (data) {
                         let Err = data.data.message;
                         if (Err == "Valid Token") {
+                            setifo(data.data.result[0]);
                             axios.post(`${baseUrl}getaddtocart`, { id: customerId }).then((data) => {
                                 if (data) {
                                     const da = data.data.result;
@@ -58,12 +60,19 @@ const Addtocart = () => {
     const display = () => {
         if (sum > 0) {
             if (customer) {
+                const Name = ifo.Name
+                const email = ifo.email
+                let price;
+                let product;
                 const send = addtocart.forEach((val, index) => {
-                    const price = val.price;
-                    const product = val.product;
-                    console.log(price,product);
+                    price = (val.price);
+                    product = (val.product);
+                    console.log(price, product);
                 });
-                // axios.post(`${baseUrl}adminsignup`,)
+                const allinfor = { Name, email, price, product }
+                // console.log(price);
+                console.log(allinfor);
+                axios.post(`${baseUrl}mail`,)
             }
             setdis(prev => true)
             setTimeout(() => {

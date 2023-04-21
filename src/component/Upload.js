@@ -96,7 +96,8 @@ const Upload = () => {
                 <option value="beauty">beauty</option>
                 <option value="sports">sports</option>
                 <option value="toys-games">toys-games</option>
-                <option value="health">health</option>
+                <option value="Onsale">Onsale</option>
+                <option value="fashion">fashion</option>
                 <option value="automotive">automotive</option>
                 <option value="books-media">books-media</option>
                 <option value="pet-supplies">pet-supplies</option>
