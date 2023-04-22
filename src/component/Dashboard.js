@@ -119,6 +119,7 @@ const Dashboard = () => {
                                             </div>
                                             <div className="product-botttom text-center mt-3">
                                                 <h3>{item.product}</h3>
+                                                <h5><b>₦</b> {item.price}</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -143,7 +144,8 @@ const Dashboard = () => {
                                                 </div>
                                             </div>
                                             <div className="product-botttom text-center mt-3">
-                                                <h3>{item.product}</h3>
+                                                <h5>{item.product}</h5>
+                                                <h5><b>₦</b> {item.price}</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -168,7 +170,7 @@ const Dashboard = () => {
                                     <div className="imgBx">
                                         <img src={returnoninvestment} alt="zoom" />
                                         <div className="feature-text">
-                                            <p><b>Return within 30 days </b>of recieving your order.</p>
+                                            <p><b>Return within 24 hours </b>of recieving your order.</p>
                                         </div>
                                     </div>
                                 </div>

@@ -13,7 +13,10 @@ const Navbar = () => {
     const [searchInput, setSearchInput] = useState('');
     const [files, setfiles] = useState([])
     const [first, setfirst] = useState(false)
+    const [car, setcar] = useState();
+    const [tru, settru] = useState(false)
     const customer = localStorage.customer;
+    const customerId = localStorage.customerId;
 
     // const [filteredProducts, setfilteredProducts] = useState([])
 
@@ -31,6 +34,15 @@ const Navbar = () => {
         axios.get(`${baseUrl}goods`).then((data) => {
             if (data) {
                 setfiles(data.data.result);
+            }
+        })
+        axios.post(`${baseUrl}getaddtocart`, { id: customerId }).then((data) => {
+            if (data) {
+                const da = data.data.result;
+                setcar(da.length);
+                if (da.length > 0) {
+                    settru(prev => true)
+                }
             }
         })
     }, [])
@@ -90,7 +102,13 @@ const Navbar = () => {
                                     className='cart stye'
                                 >
                                     <span>
-                                        <i className="fa fs-5 fa-shopping-basket mx-md-4 mx-3"> Cart </i>
+                                        <i className="fa fs-5 fa-shopping-basket mx-md-4 mx-3 position-relative">  <span className="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-danger">
+                                            {tru && (
+                                                <div className="">
+                                                    {car}
+                                                </div>
+                                            )}
+                                        </span> <span> Cart</span></i>
                                     </span>
                                 </Link>
                                 {/* <Link

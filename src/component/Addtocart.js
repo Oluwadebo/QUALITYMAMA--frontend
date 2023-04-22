@@ -64,7 +64,7 @@ const Addtocart = () => {
             setdis(prev => true)
             setTimeout(() => {
                 setdis(prev => false)
-            }, 60000);
+            }, 60500);
         }
     }
     const mailler = () => {
@@ -77,8 +77,7 @@ const Addtocart = () => {
                 let income = { price, product }
                 return (income)
             });
-            const allinfor = { Name, email, ordered }
-            console.log(allinfor);
+            const allinfor = { Name, email, ordered };
             axios.post(`${baseUrl}mail`, allinfor)
         }
     }
@@ -169,6 +168,9 @@ const Addtocart = () => {
                                                     <h4>1664848694 <span style={{ float: 'right', }}><button className='butt mx-1' onClick={handleClick}>
                                                         {copied ? 'Copied!' : <i class="fa fa-copy"></i>}
                                                     </button></span> <br /> ACCESS BANK <br /> OGUNWE DEBO</h4>
+                                                    <p>
+                                                        <b className="text-danger"><marquee className="card">Please click on the button below, (only) after payment to Confirm transaction</marquee></b>
+                                                    </p>
                                                     <button type="button" className="default-btn btn-bg-two" onClick={mailler}><a href="https://wa.me/2349044796430" className='text-white'>Confirm transaction</a></button>
                                                 </div>
                                             )}
