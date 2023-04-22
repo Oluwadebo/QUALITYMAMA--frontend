@@ -9,6 +9,7 @@ import Navbar from './Navbar'
 const Addtocart = () => {
     const customer = localStorage.customer;
     const customerId = localStorage.customerId;
+    const cart = localStorage.admin;
     const navigate = useNavigate();
     const [addtocart, setaddtocart] = useState([]);
     const [first, setfirst] = useState(true);
@@ -16,6 +17,7 @@ const Addtocart = () => {
     const [dis, setdis] = useState(false)
     const [copied, setCopied] = useState(false);
     const [ifo, setifo] = useState([])
+    const [admin, setadmin] = useState([]);
 
 
     let sum = 0;
@@ -59,28 +61,28 @@ const Addtocart = () => {
 
     const display = () => {
         if (sum > 0) {
-            if (customer) {
-                const Name = ifo.Name
-                const email = ifo.email
-                let price;
-                let product;
-                const send = addtocart.forEach((val, index) => {
-                    price = (val.price);
-                    product = (val.product);
-                    console.log(price, product);
-                });
-                const allinfor = { Name, email, price, product }
-                // console.log(price);
-                console.log(allinfor);
-                axios.post(`${baseUrl}mail`,)
-            }
             setdis(prev => true)
             setTimeout(() => {
                 setdis(prev => false)
             }, 60000);
         }
     }
-
+    const mailler = () => {
+        if (customer) {
+            const Name = ifo.Name
+            const email = ifo.email
+            let ordered = addtocart.map((val) => {
+                let price = (val.price);
+                let product = (val.product);
+                let income = { price, product }
+                return (income)
+            });
+            const allinfor = { Name, email, ordered }
+            console.log(allinfor);
+            axios.post(`${baseUrl}mail`, allinfor)
+        }
+    }
+    // console.log(admin);
     const handleClick = () => {
         const textToCopy = 1664848694;
         navigator.clipboard.writeText(textToCopy);
@@ -167,7 +169,7 @@ const Addtocart = () => {
                                                     <h4>1664848694 <span style={{ float: 'right', }}><button className='butt mx-1' onClick={handleClick}>
                                                         {copied ? 'Copied!' : <i class="fa fa-copy"></i>}
                                                     </button></span> <br /> ACCESS BANK <br /> OGUNWE DEBO</h4>
-                                                    <button type="button" className="default-btn btn-bg-two" ><a href="https://wa.me/2349044796430" className='text-white'>Confirm transaction</a></button>
+                                                    <button type="button" className="default-btn btn-bg-two" onClick={mailler}><a href="https://wa.me/2349044796430" className='text-white'>Confirm transaction</a></button>
                                                 </div>
                                             )}
                                         </div>
