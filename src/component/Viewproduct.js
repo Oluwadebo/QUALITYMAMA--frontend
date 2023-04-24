@@ -10,12 +10,15 @@ const Viewproduct = () => {
     const navigate = useNavigate();
     const customer = localStorage.customer;
     const ViewproductId = localStorage.Viewproduct;
+    const storedData = localStorage.myData;
     const [product, setproduct] = useState([])
     const [customers, setcustomers] = useState([])
     const customerId = localStorage.customerId;
     const [message, setmessage] = useState("")
     const [messdiv, setmessdiv] = useState(false)
     const [files, setfiles] = useState([])
+    const [viewed, setviewed] = useState([])
+    const [recentlyViewed, setRecentlyViewed] = useState([]);
     // const [Similarity, setSimilarity] = useState("")
 
     useEffect(() => {
@@ -23,6 +26,8 @@ const Viewproduct = () => {
             axios.post(`${baseUrl}Viewproduct`, { ViewproductId }).then((data) => {
                 if (data) {
                     setproduct(data.data.result);
+                    const viewedProducts = JSON.parse(localStorage.getItem('RecentlyviewedProducts')) || [];
+                    setRecentlyViewed(viewedProducts);
                     const Similarity = data.data.result[0].selectedOption;
                     axios.post(`${baseUrl}Similarity`, { Similarity }).then((data) => {
                         if (data) {
@@ -34,7 +39,7 @@ const Viewproduct = () => {
         } else {
             navigate("/")
         }
-    }, [])
+    }, [ViewproductId])
 
     const addtocart = (val) => {
         if (customer) {
@@ -79,7 +84,10 @@ const Viewproduct = () => {
     const viewproduct = (val) => {
         if (val) {
             localStorage.Viewproduct = val
-            window.location.reload()
+            const updatedRecentlyViewedProducts = [val, ...recentlyViewed.filter((id) => id !== val)];
+            localStorage.setItem('RecentlyviewedProducts', JSON.stringify(updatedRecentlyViewedProducts));
+            setRecentlyViewed(updatedRecentlyViewedProducts);
+            // window.location.reload()
         }
     }
 

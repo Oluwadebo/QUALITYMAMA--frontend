@@ -21,16 +21,16 @@ import Footer from './Footer';
 
 const Dashboard = () => {
     const navigate = useNavigate();
-    // const [customers, setcustomers] = useState([])
     const [files, setfiles] = useState([])
     const [sale, setsale] = useState([])
     const [fashion, setfashion] = useState([])
-    // const customer = localStorage.customer;
-    // const customerId = localStorage.customerId;
+    const [recentlyViewed, setRecentlyViewed] = useState([]);
 
     useEffect(() => {
         axios.get(`${baseUrl}goods`).then((data) => {
             if (data) {
+                const viewedProducts = JSON.parse(localStorage.getItem('RecentlyviewedProducts')) || [];
+                setRecentlyViewed(viewedProducts);
                 setfiles(data.data.result);
                 let Onsale = "Onsale"
                 axios.post(`${baseUrl}onsale`, { Onsale }).then((data) => {
@@ -51,9 +51,13 @@ const Dashboard = () => {
     const viewproduct = (val) => {
         if (val) {
             localStorage.Viewproduct = val
+            const updatedRecentlyViewedProducts = [val, ...recentlyViewed.filter((id) => id !== val)];
+            localStorage.setItem('RecentlyviewedProducts', JSON.stringify(updatedRecentlyViewedProducts));
+            setRecentlyViewed(updatedRecentlyViewedProducts);
             navigate("/Viewproduct")
         }
     }
+    // console.log(recentlyViewed);
 
     return (
         <>
