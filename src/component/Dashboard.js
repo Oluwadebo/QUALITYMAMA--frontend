@@ -51,13 +51,12 @@ const Dashboard = () => {
     const viewproduct = (val) => {
         if (val) {
             localStorage.Viewproduct = val
-            const updatedRecentlyViewedProducts = [val, ...recentlyViewed.filter((id) => id !== val)];
+            const updatedRecentlyViewedProducts = [val, ...recentlyViewed.filter((id) => id !== val)].slice(0, 6);
             localStorage.setItem('RecentlyviewedProducts', JSON.stringify(updatedRecentlyViewedProducts));
             setRecentlyViewed(updatedRecentlyViewedProducts);
             navigate("/Viewproduct")
         }
     }
-    // console.log(recentlyViewed);
 
     return (
         <>
@@ -108,13 +107,13 @@ const Dashboard = () => {
                 </div>
                 <div className="px-3 onsale">
                     <section className="on-sale">
-                        <div className="container-fluid">
+                        <div className="container-fluid card p-2">
                             <div className="title-box">
                                 <h2>On Sale</h2>
                             </div>
                             <div className="row">
                                 {sale.map((item, index) => (
-                                    <div className="col-lg-3 col-md-6 my-3 mt-md-0">
+                                    <div className="col-lg-3 col-md-6 my-3 mt-md-0 scal">
                                         <div className="product-top">
                                             <div className="" onClick={() => viewproduct(item._id)}>
                                                 <div className="imgBx">
@@ -134,13 +133,13 @@ const Dashboard = () => {
                 </div>
                 <div className="px-3 new-product">
                     <section className="new-product">
-                        <div className="container-fluid">
+                        <div className="container-fluid card p-2">
                             <div className="title-box">
                                 <h2>New Arrivals</h2>
                             </div>
                             <div className="row">
                                 {files.map((item, index) => (
-                                    <div className="col-lg-3 col-md-6 my-3 mt-md-0">
+                                    <div className="col-lg-3 col-md-6 my-3 mt-md-0 scal">
                                         <div className="product-top">
                                             <div className="" onClick={() => viewproduct(item._id)}>
                                                 <div className="imgBx">

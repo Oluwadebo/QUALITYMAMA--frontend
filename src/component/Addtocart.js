@@ -81,7 +81,6 @@ const Addtocart = () => {
             axios.post(`${baseUrl}mail`, allinfor)
         }
     }
-    // console.log(admin);
     const handleClick = () => {
         const textToCopy = 1664848694;
         navigator.clipboard.writeText(textToCopy);

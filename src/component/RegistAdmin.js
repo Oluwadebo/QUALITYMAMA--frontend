@@ -187,17 +187,18 @@ const RegistAdmin = () => {
                                         </div>
                                     )}
                                     <label>&#x1F512;&nbsp; Your password</label>
-                                    <button
-                                        type="submit"
-                                        className="btn form-control py-3 mt-3 asdb"
-                                    >
-                                        <b>Sign-In</b>
-                                        {loader && (
-                                            <div className="spin">
+                                    
+                                        <button
+                                            type="submit"
+                                            className="defaultbtn btn-bg-two mt-2 mx-auto"
+                                        >
+                                            <b>Sign-In</b>
+                                        </button>
+                                            {loader && (
+                                            <div className="spin mt-2">
                                                 <div className="loader"></div>
                                             </div>
                                         )}
-                                    </button>
                                 </div>
                                 <div className="row mt-3 text-white">
                                     <div className="col-md-12">
@@ -284,7 +285,7 @@ const RegistAdmin = () => {
                                         onBlur={signup.handleBlur}
                                         style={{ backgroundColor: "#F5F7FA" }}
                                     >
-                                        <option>&#x1F4B7;&nbsp; Your gender</option>
+                                        <option>&#x2642;&#x2640;&nbsp; Your gender</option>
                                         <option value="MALE">MALE</option>
                                         <option value="FEMALE">FEMALE</option>
                                     </select>
@@ -293,7 +294,7 @@ const RegistAdmin = () => {
                                             {signup.errors.gender}
                                         </div>
                                     )}
-                                    <label>&#x1F4B7;&nbsp; Your gender</label>
+                                    <label>&#x2642;&#x2640;&nbsp; Your gender</label>
                                 </div>
                                 <div className="form-floating my-3">
                                     <input
@@ -328,15 +329,15 @@ const RegistAdmin = () => {
                                     <label>&#x1F512;&nbsp; Your password</label>
                                     <button
                                         type="submit"
-                                        className="btn form-control py-3 mt-3 asdb"
+                                        className="defaultbtn btn-bg-two mt-2 mx-auto"
                                     >
                                         <b>Sign-Up</b>
+                                    </button>
                                         {loader && (
-                                            <div className="spin">
+                                            <div className="spin mt-2">
                                                 <div className="loader"></div>
                                             </div>
                                         )}
-                                    </button>
                                 </div>
                                 <div className="row mt-3 text-white">
                                     <div className="col-md-12">

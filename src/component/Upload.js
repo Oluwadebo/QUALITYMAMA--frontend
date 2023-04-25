@@ -8,8 +8,9 @@ const Upload = () => {
   const [file, setfile] = useState("");
   const [product, setproduct] = useState("");
   const [price, setprice] = useState("");
+  const [Ppice, setPprice] = useState("");
   const [description, setdescription] = useState("");
-  const [Link, setLink] = useState("");
+  // const [Link, setLink] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
   const [Err, setErr] = useState("")
   const adminId = localStorage.adminId
@@ -27,10 +28,11 @@ const Upload = () => {
     setSelectedOption(selectedOpt.value);
   };
   const upload = () => {
-    if (file != "" && product != "" && price != "" && selectedOption != "" && description != "") {
+    if (file != "" && product != "" && price != "" && selectedOption != "" && description != "" && Ppice != "") {
       setErr("")
       setloader(prev => true)
-      const userdata = { file, product, price, adminId, selectedOption, description }
+      let Pprice = `₦ ${Ppice}`;
+      const userdata = { file, product, price, adminId, selectedOption, description,Pprice }
       axios.post(`${baseUrl}files`, userdata).then((credentials) => {
         if (credentials) {
           let info = credentials.data.message;
@@ -48,7 +50,7 @@ const Upload = () => {
       })
     } else {
       setloader(prev => false)
-      if (file == "" && product == "" && price == "" && selectedOption == "" && description == "") {
+      if (file == "" && product == "" && price == "" && selectedOption == "" && description == "" && Ppice == "") {
         setErr("All input field are required")
       } else if (file == "") {
         setErr("file input field is required")
@@ -58,18 +60,18 @@ const Upload = () => {
         setErr("product description input field is required")
       } else if (price == "") {
         setErr("product price input field is required")
+      }else if (Ppice == "") {
+        setErr("product Previous price input field is required")
       } else if (selectedOption == "") {
         setErr("Category input field is required")
-      } else {
-        if (Link == "") {
-          setErr("product Link input field is required")
-        }
       }
+      // else {
+      //   if (Link == "") {
+      //     setErr("product Link input field is required")
+      //   }
+      // }
     }
   }
-  // const Reset = () => {
-  //   window.location.reload()
-  // }
   return (
     <>
       <div className="container">
@@ -88,6 +90,7 @@ const Upload = () => {
               <input type="text" className="form-control my-2" placeholder="Product name" onChange={(e) => setproduct(e.target.value)} />
               <input type="text" className="form-control my-2" placeholder="Product description" onChange={(e) => setdescription(e.target.value)} />
               <input type="text" className="form-control my-2" placeholder="Product price" onChange={(e) => setprice(e.target.value)} />
+              <input type="text" className="form-control my-2" placeholder="Product Previous price" onChange={(e) => setPprice(e.target.value)} />
               <select id="selectOptions" className="select" value={selectedOption} onChange={(e) => handleSelectChange(e)}>
                 <option value="">Select your Category</option>
                 <option value="clothing">clothing</option>
@@ -111,7 +114,6 @@ const Upload = () => {
                   </div>
                 )}
               </button>
-              {/* <button type="reset" className="btn form-control py-3 mt-3 asdb" onClick={Reset}>Reset</button> */}
             </div>
           </div>
         </div>

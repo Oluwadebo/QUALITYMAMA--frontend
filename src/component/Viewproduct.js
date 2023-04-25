@@ -16,10 +16,11 @@ const Viewproduct = () => {
     const customerId = localStorage.customerId;
     const [message, setmessage] = useState("")
     const [messdiv, setmessdiv] = useState(false)
+    const [Disrecently, setDisrecently] = useState(false)
     const [files, setfiles] = useState([])
     const [viewed, setviewed] = useState([])
     const [recentlyViewed, setRecentlyViewed] = useState([]);
-    // const [Similarity, setSimilarity] = useState("")
+    const [DisrecentlyViewed, setDisRecentlyViewed] = useState([]);
 
     useEffect(() => {
         if (ViewproductId) {
@@ -28,6 +29,12 @@ const Viewproduct = () => {
                     setproduct(data.data.result);
                     const viewedProducts = JSON.parse(localStorage.getItem('RecentlyviewedProducts')) || [];
                     setRecentlyViewed(viewedProducts);
+                    axios.post(`${baseUrl}Recentlyviewed`, viewedProducts).then((data) => {
+                        if (data) {
+                            setDisRecentlyViewed(data.data.products);
+                            setDisrecently(prev => true)
+                        }
+                    })
                     const Similarity = data.data.result[0].selectedOption;
                     axios.post(`${baseUrl}Similarity`, { Similarity }).then((data) => {
                         if (data) {
@@ -84,10 +91,9 @@ const Viewproduct = () => {
     const viewproduct = (val) => {
         if (val) {
             localStorage.Viewproduct = val
-            const updatedRecentlyViewedProducts = [val, ...recentlyViewed.filter((id) => id !== val)];
+            const updatedRecentlyViewedProducts = [val, ...recentlyViewed.filter((id) => id !== val)].slice(0, 6);
             localStorage.setItem('RecentlyviewedProducts', JSON.stringify(updatedRecentlyViewedProducts));
             setRecentlyViewed(updatedRecentlyViewedProducts);
-            // window.location.reload()
         }
     }
 
@@ -97,47 +103,48 @@ const Viewproduct = () => {
             <div className="container-fluid mt-5 pt-1 mb-4 p-0 m-0">
                 <div className="">
                     <section className="single-product">
-                        <div className="container-fluid px-3">
-                            {/* <marquee>{message}</marquee> */}
-                            {messdiv && (
-                                <div className="alert alert-info text-center" role="alert">{message}</div>
-                            )}
-                            {product.map((item, index) => (
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <div className="product-top">
-                                            <div className="imgBx">
-                                                <img src={item.file} />
+                        <div className="container-fluid px-2">
+                            <div className="card p-2">
+                                {messdiv && (
+                                    <div className="alert alert-info text-center" role="alert">{message}</div>
+                                )}
+                                {product.map((item, index) => (
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <div className="product-top">
+                                                <div className="imgBx">
+                                                    <img src={item.file} />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <div className="title-box">
-                                            <h2 className='text-white'>Details</h2>
+                                        <div className="col-md-6">
+                                            <div className="title-box">
+                                                <h2 className='text-white'>Details</h2>
+                                            </div>
+                                            <h2>{item.product}</h2>
+                                            <i className="fa fa-star"></i>
+                                            <i className="fa fa-star"></i>
+                                            <i className="fa fa-star"></i>
+                                            <i className="fa fa-star"></i>
+                                            <i className="fa fa-star"></i> <br /><hr />
+                                            <h5 className='float'> {item.description}</h5>
+                                            <p className="price"><b>₦</b> {item.price}</p>
+                                            <button type="button" className="default-btn btn-bg-two" onClick={() => addtocart(item._id)}>Add to Cart</button>
+                                            {/* <button type="submit" className="default-btn btn-bg-two"><a href={item.Link}>Add to Cart</a></button> */}
                                         </div>
-                                        <h2>{item.product}</h2>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i> <br /><br />
-                                        <h5 className='float'> {item.description}</h5>
-                                        <p className="price"><b>₦</b> {item.price}</p>
-                                        <button type="button" className="default-btn btn-bg-two" onClick={() => addtocart(item._id)}>Add to Cart</button>
-                                        {/* <button type="submit" className="default-btn btn-bg-two"><a href={item.Link}>Add to Cart</a></button> */}
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
                     </section>
                     <div className="px-2 new-product">
-                        <div className="container-fluid">
+                        <div className="container-fluid card p-2 mb-2">
                             <div className="title-box">
                                 <h2 className='text-white'>Similar Product</h2>
                             </div>
                             <div className="row">
                                 {files.map((item, index) => (
-                                    <div className="col-lg-3 col-md-6 my-3 mt-md-0">
+                                    <div className="col-lg-3 col-md-6 my-3 mt-md-0 scal">
                                         <div className="product-top">
                                             <div className="" onClick={() => viewproduct(item._id)}>
                                                 <div className="imgBx">
@@ -152,6 +159,30 @@ const Viewproduct = () => {
                                 ))}
                             </div>
                         </div>
+                        {Disrecently && (
+                            <div className="card">
+                                <div className="p-2">
+                                    <h5>Recently Viewed</h5>
+                                    <div className="row">
+                                        {DisrecentlyViewed.map((item, index) => (
+                                            <div className="col-lg-2 col-md-3 my-3 mt-md-0 scal">
+                                                <div className="producttop">
+                                                    <div className="" onClick={() => viewproduct(item._id)}>
+                                                        <div className="imgBx">
+                                                            <img src={item.file} className="h-100" alt='zoom' />
+                                                        </div>
+                                                    </div>
+                                                    <div className="product-botttom text-center mt-3">
+                                                        <h3>{item.product}</h3>
+                                                        <h5><b>₦</b> {item.price}</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
                 <Footer />

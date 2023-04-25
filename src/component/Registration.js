@@ -187,15 +187,15 @@ const Registration = () => {
                                     <label>&#x1F512;&nbsp; Your password</label>
                                     <button
                                         type="submit"
-                                        className="btn form-control py-3 mt-3 asdb"
+                                        className="defaultbtn btn-bg-two mt-2 mx-auto"
                                     >
                                         <b>Sign-In</b>
+                                    </button>
                                         {loader && (
-                                            <div className="spin">
+                                            <div className="spin mt-2">
                                                 <div className="loader"></div>
                                             </div>
                                         )}
-                                    </button>
                                 </div>
                                 <div className="row mt-3 text-white">
                                     <div className="col-md-12">
@@ -303,15 +303,15 @@ const Registration = () => {
                                     <label>&#x1F512;&nbsp; Your password</label>
                                     <button
                                         type="submit"
-                                        className="btn form-control py-3 mt-3 asdb"
+                                        className="defaultbtn btn-bg-two mt-2 mx-auto"
                                     >
                                         <b>Sign-Up</b>
+                                    </button>
                                         {loader && (
-                                            <div className="spin">
+                                            <div className="spin mt-2">
                                                 <div className="loader"></div>
                                             </div>
                                         )}
-                                    </button>
                                 </div>
                                 <div className="row mt-3 text-white">
                                     <div className="col-md-12">

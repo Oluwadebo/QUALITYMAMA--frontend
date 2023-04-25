@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import { baseUrl } from "./endpoint";
@@ -10,7 +10,6 @@ import Footer from './Footer';
 const Admin = () => {
     const navigate = useNavigate();
     const [admin, setadmin] = useState([])
-    const [adminId, setadminId] = useState('')
     const [pageloader, setpageloader] = useState(true)
     const [adminfiles, setadminfiles] = useState([])
     const token = localStorage.Admin;
@@ -31,7 +30,6 @@ const Admin = () => {
                         if (Err == "Valid Token") {
                             setadmin(data.data.result[0]);
                             localStorage.adminId = data.data.result[0]._id
-                            setadminId(data.data.result[0]._id)
                         } else {
                             localStorage.removeItem('Admin')
                             localStorage.removeItem('adminId')
@@ -48,12 +46,12 @@ const Admin = () => {
         } else {
             navigate("/RegistAdmin")
         }
-    }, [])
+    }, [adminfiles])
 
     const delet = (val) => {
         axios.post(`${baseUrl}admindel`, { id: val }).then((data) => {
             if (data) {
-                window.location.reload()
+                // window.location.reload()
             }
         })
     };
@@ -86,13 +84,15 @@ const Admin = () => {
                                 {!pageloader && (
                                     <div className="row">
                                         {adminfiles.map((item, index) => (
-                                            <div className="col-md-4">
+                                            <div className="col-md-4 scal">
                                                 <div className="product-top">
                                                     <div className="imgBx">
                                                         <img src={item.file} className="h-100" />
                                                     </div>
                                                     <div className="product-botttom mt-2">
-                                                        <h3><span className='float1'>{item.product}</span> <span className='float2'>{item.price}</span></h3><br />
+                                                        <h3><span className='float1'>{item.product}</span> <span className='float2'><b>₦</b> {item.price} </span></h3><br />
+                                                        <h3 className='float2 opaci'><del>{item.Pprice}</del></h3><br />
+
                                                         <h5 className='float'>{item.description}</h5>
                                                     </div>
                                                     <div className="row">
