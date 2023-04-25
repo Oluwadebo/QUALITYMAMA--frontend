@@ -18,6 +18,8 @@ const Addtocart = () => {
     const [copied, setCopied] = useState(false);
     const [ifo, setifo] = useState([])
     const [admin, setadmin] = useState([]);
+    const [Location, setLocation] = useState();
+
 
 
     let sum = 0;
@@ -58,7 +60,10 @@ const Addtocart = () => {
     const total = addtocart.forEach((val, index) => {
         sum = sum + parseFloat(val.price)
     });
-
+    const handleSelectChange = (e) => {
+        let selectedOpt = document.getElementById("selectOptions");
+        setLocation(selectedOpt.value);
+    };
     const display = () => {
         if (sum > 0) {
             setdis(prev => true)
@@ -77,7 +82,8 @@ const Addtocart = () => {
                 let income = { price, product }
                 return (income)
             });
-            const allinfor = { Name, email, ordered };
+            const allinfor = { Name, email, ordered, Location };
+            console.log(allinfor);
             axios.post(`${baseUrl}mail`, allinfor)
         }
     }
@@ -89,7 +95,6 @@ const Addtocart = () => {
             setCopied(false);
         }, 2000);
     }
-
     const remove = (val) => {
         axios.post(`${baseUrl}removeaddtocart`, { id: val }).then((data) => {
             if (data) {
@@ -112,20 +117,21 @@ const Addtocart = () => {
                                         {!first && (
                                             <div className="row p-2">
                                                 {addtocart.map((item, index) => (
-                                                    <div className="col-12">
+                                                    <div className="col-12 scal">
                                                         <div className="card mb-1">
                                                             <div className="row">
-                                                                <div className="col-2">
+                                                                <div className="col-md-2">
                                                                     <div className="produ p-1">
                                                                         <div className="imgBx">
                                                                             <img src={item.file} className="h-100" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div className="col-7 pt-3">
-                                                                    <h4>{item.product}</h4>
+                                                                <div className="col-md-7 col-6 pt-3">
+                                                                    <h4 className='px-2'>{item.product}</h4>
+                                                                    <h6 className='px-2'>{item.information}</h6>
                                                                 </div>
-                                                                <div className="col-3">
+                                                                <div className="col-md-3 col-6">
                                                                     <h4 className='px-3 pt-3' style={{ float: 'right', }}><b>₦</b> {item.price}</h4>
                                                                 </div>
                                                                 <div className="col-12 sd">
@@ -151,14 +157,21 @@ const Addtocart = () => {
                                         </div>
                                         <div className="card p-2">
                                             <div className="row">
-                                                <div className="col-8">
+                                                <div className="col-5">
                                                     <h5>Subtotal</h5>
                                                 </div>
-                                                <div className="col-4">
+                                                <div className="col-7">
                                                     <h4 style={{ float: 'right', }}><b>₦</b> {sum}</h4>
                                                 </div>
                                             </div>
                                             <p>Delivery fees not included yet.</p>
+                                            <label for="locations">Select your location:</label>
+                                            <select id="selectOptions" className="select" value={Location} onChange={(e) => handleSelectChange(e)}>
+                                                <option value="">Select your location</option>
+                                                <option value="Stadium">Stadium</option>
+                                                <option value="Sabo">Sabo</option>
+                                                <option value="Under G">Under G</option>
+                                            </select>
                                         </div>
                                         <div className="card p-2">
                                             <button type="button" className="default-btn btn-bg-two" onClick={display}>CHECKOUT (₦ {sum})</button>

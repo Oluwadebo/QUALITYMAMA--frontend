@@ -82,6 +82,7 @@ const Registration = () => {
                     } else {
                         if (Err == "Token generated") {
                             localStorage.customer = credentials.data.token
+                            localStorage.customerId = credentials.data.id
                             setloader(prev => false)
                             navigate("/")
                         }

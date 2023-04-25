@@ -21,12 +21,20 @@ const Viewproduct = () => {
     const [viewed, setviewed] = useState([])
     const [recentlyViewed, setRecentlyViewed] = useState([]);
     const [DisrecentlyViewed, setDisRecentlyViewed] = useState([]);
+    const [information, setinformation] = useState("");
+    const [Additionalinformation, setAdditionalinformation] = useState(false)
 
     useEffect(() => {
         if (ViewproductId) {
             axios.post(`${baseUrl}Viewproduct`, { ViewproductId }).then((data) => {
                 if (data) {
                     setproduct(data.data.result);
+                    let res = data.data.result[0].selectedOption
+                    if (res === "infomation") {
+                        setAdditionalinformation(prev => true)
+                        console.log(information);
+
+                    }
                     const viewedProducts = JSON.parse(localStorage.getItem('RecentlyviewedProducts')) || [];
                     setRecentlyViewed(viewedProducts);
                     axios.post(`${baseUrl}Recentlyviewed`, viewedProducts).then((data) => {
@@ -63,7 +71,7 @@ const Viewproduct = () => {
                         if (Err == "Valid Token") {
                             setcustomers(data.data.result[0]);
                             localStorage.customerId = data.data.result[0]._id
-                            axios.post(`${baseUrl}addtocart`, { val, customerId }).then((data) => {
+                            axios.post(`${baseUrl}addtocart`, { val, customerId, information }).then((data) => {
                                 if (data) {
                                     let mess = data.data.message;
                                     if (mess == "add-to-cart successfuly") {
@@ -118,7 +126,7 @@ const Viewproduct = () => {
                                             </div>
                                         </div>
                                         <div className="col-md-6">
-                                            <div className="title-box">
+                                            <div className="title-box mt-2 mt-md-0">
                                                 <h2 className='text-white'>Details</h2>
                                             </div>
                                             <h2>{item.product}</h2>
@@ -129,6 +137,12 @@ const Viewproduct = () => {
                                             <i className="fa fa-star"></i> <br /><hr />
                                             <h5 className='float'> {item.description}</h5>
                                             <p className="price"><b>₦</b> {item.price}</p>
+                                            {Additionalinformation && (
+                                                <div className="">
+                                                    <h5 className="float">Additional information</h5>
+                                                    <textarea rows="1" className='Cart-input' placeholder="Size,length,colour,e.t.c" onChange={(e) => setinformation(e.target.value)}></textarea><br />
+                                                </div>
+                                            )}
                                             <button type="button" className="default-btn btn-bg-two" onClick={() => addtocart(item._id)}>Add to Cart</button>
                                             {/* <button type="submit" className="default-btn btn-bg-two"><a href={item.Link}>Add to Cart</a></button> */}
                                         </div>

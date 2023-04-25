@@ -85,8 +85,8 @@ const Navbar = () => {
                         </button>
                         <div className="collapse navbar-collapse" id="navbarText">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                                <input type="text" className="form-control sty d-none d-md-block cash" placeholder='search' onChange={(e) => setSearchInput(e.target.value)} />
-                                <span className="input-group-text d-none d-md-block" onClick={handleSearch}><i className="fa fa-search"></i></span>
+                                <input type="text" className="form-control sty d-none d-lg-block cash" placeholder='search' onChange={(e) => setSearchInput(e.target.value)} />
+                                <span className="input-group-text d-none d-lg-block" onClick={handleSearch}><i className="fa fa-search"></i></span>
                             </ul>
                             <div className="col-12 col-md-8 text-md-end">
                                 <Link
