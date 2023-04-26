@@ -18,9 +18,8 @@ const Addtocart = () => {
     const [copied, setCopied] = useState(false);
     const [ifo, setifo] = useState([])
     const [admin, setadmin] = useState([]);
-    const [Location, setLocation] = useState();
-
-
+    const [Location, setLocation] = useState("");
+    const [ERR, setERR] = useState(false)
 
     let sum = 0;
     useEffect(() => {
@@ -66,10 +65,15 @@ const Addtocart = () => {
     };
     const display = () => {
         if (sum > 0) {
-            setdis(prev => true)
-            setTimeout(() => {
-                setdis(prev => false)
-            }, 60500);
+            if (Location != "") {
+                setdis(prev => true)
+                setERR(prev => false)
+                setTimeout(() => {
+                    setdis(prev => false)
+                }, 60500);
+            } else {
+                setERR(prev => true)
+            }
         }
     }
     const mailler = () => {
@@ -79,7 +83,8 @@ const Addtocart = () => {
             let ordered = addtocart.map((val) => {
                 let price = (val.price);
                 let product = (val.product);
-                let income = { price, product }
+                let information = (val.information);
+                let income = { price, product, information }
                 return (income)
             });
             const allinfor = { Name, email, ordered, Location };
@@ -166,11 +171,22 @@ const Addtocart = () => {
                                             </div>
                                             <p>Delivery fees not included yet.</p>
                                             <label for="locations">Select your location:</label>
+                                            {ERR && (
+                                                <p>
+                                                    <b className="text-danger"><marquee className="card">Please Select your location</marquee></b>
+                                                </p>
+                                            )}
                                             <select id="selectOptions" className="select" value={Location} onChange={(e) => handleSelectChange(e)}>
                                                 <option value="">Select your location</option>
                                                 <option value="Stadium">Stadium</option>
                                                 <option value="Sabo">Sabo</option>
-                                                <option value="Under G">Under G</option>
+                                                <option value="Lautech">Lautech</option>
+                                                <option value="Under-G gate">Under-G gate</option>
+                                                <option value="Under-G">Under-G</option>
+                                                <option value="Lautech main gate">Lautech main gate</option>
+                                                <option value="Yoacco">Yoacco</option>
+                                                <option value="Akowonjo">Akowonjo</option>
+                                                <option value="Adenike">Adenike</option>
                                             </select>
                                         </div>
                                         <div className="card p-2">

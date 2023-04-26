@@ -7,6 +7,7 @@ import Admin from "./component/Admin";
 import RegistAdmin from "./component/RegistAdmin";
 import Addtocart from "./component/Addtocart";
 import Viewproduct from "./component/Viewproduct";
+import Ordered from "./component/Ordered";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/Registration" element={<Registration />} />
+        <Route path="/Ordered" element={<Ordered/>} />
         <Route path="/RegistAdmin" element={<RegistAdmin />} />
         <Route path="/Addtocart" element={<Addtocart />} />
         <Route path="/Admin" element={<Admin />} />
