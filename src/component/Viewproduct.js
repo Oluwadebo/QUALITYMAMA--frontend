@@ -54,7 +54,7 @@ const Viewproduct = () => {
         } else {
             navigate("/")
         }
-    }, [ViewproductId])
+    }, [])
 
     const addtocart = (val) => {
         if (customer) {
@@ -102,6 +102,7 @@ const Viewproduct = () => {
             const updatedRecentlyViewedProducts = [val, ...recentlyViewed.filter((id) => id !== val)].slice(0, 6);
             localStorage.setItem('RecentlyviewedProducts', JSON.stringify(updatedRecentlyViewedProducts));
             setRecentlyViewed(updatedRecentlyViewedProducts);
+            window.location.reload()
         }
     }
 
