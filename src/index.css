@@ -297,7 +297,7 @@ code {
 }
 .product-top .imgBx {
   position: relative;
-  height: 75vh;
+  height: 50vh;
   width: 100%;
 }
 .scal:hover {
@@ -528,7 +528,7 @@ code {
   color: white;
 }
 .test a:hover{
-  color: #000000;
+  color: #000000product-top;
 }
 .produ .imgBx {
   position: relative;
