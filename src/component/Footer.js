@@ -40,7 +40,7 @@ const Footer = () => {
                                 <h1>Useful Links</h1>
                                 <p><span className='priv' onClick={priv} >Privacy Policy</span> <br />
                                     {privacy && (
-                                        <span className='test'>We respect your privacy and are committed to protecting your personal information. We may collect contact and payment information to process orders and improve our services. We will not share your information with third parties except as necessary to provide services or as required by law. You may opt out of promotional emails and request deletion of personal information. Our full privacy policy can be found on our website. or <br /> please contact us at Stackcraft@gmail.com.
+                                        <span className='test'>We respect your privacy and are committed to protecting your personal information. We may collect contact and payment information to process orders and improve our services. We will not share your information with third parties except as necessary to provide services or as required by law. You may opt out of promotional emails and request deletion of personal information. Our full privacy policy can be found on our website. or <br /> please contact us at <a href="mailto:qualitymamaddg@gmail.com"><i>qualitymamaddg@gmail.com</i></a>
                                         </span>
                                     )}
                                 </p>

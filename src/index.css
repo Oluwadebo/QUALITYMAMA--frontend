@@ -523,6 +523,13 @@ code {
 .test {
   text-align: justify;
 }
+.test a{
+  text-decoration: 0;
+  color: white;
+}
+.test a:hover{
+  color: #000000;
+}
 .produ .imgBx {
   position: relative;
   height: 15vh;
