@@ -1,7 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
-import amaricanexpress from "./asset/amarican_express.png"
 import logo from "./asset/logo.png"
 import axios from 'axios';
 import { baseUrl } from "./endpoint";
@@ -111,6 +110,14 @@ const Navbar = () => {
                                         </span> <span> Cart</span></i>
                                     </span>
                                 </Link>
+                                {/* <Link
+                                    to="/Ordered"
+                                    className='cart stye'
+                                >
+                                    <span>
+                                        <i className="fa fs-5 fa-orders mx-md-4 mx-3"> Orders</i>
+                                    </span>
+                                </Link> */}
                                 {/* <Link
                                     to="/Admin"
                                     className='cart stye'

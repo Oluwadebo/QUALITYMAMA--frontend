@@ -72,7 +72,7 @@ const Admin = () => {
                             <div className="col-md-4">
                                 <Upload />
                             </div>
-                            <div className="col-md-8">
+                            <div className="col-md-8 card p-2">
                                 <div className="title-box">
                                     <h2>Products</h2>
                                 </div>
@@ -85,7 +85,7 @@ const Admin = () => {
                                     <div className="row">
                                         {adminfiles.map((item, index) => (
                                             <div className="col-md-4 scal">
-                                                <div className="product-top">
+                                                <div className="producop">
                                                     <div className="imgBx">
                                                         <img src={item.file} className="h-100" />
                                                     </div>
