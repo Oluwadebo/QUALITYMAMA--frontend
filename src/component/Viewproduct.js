@@ -118,9 +118,7 @@ const Viewproduct = () => {
                     <section className="single-product">
                         <div className="container-fluid px-2">
                             <div className="card p-2">
-                                {messdiv && (
-                                    <div className="alert alert-info text-center" role="alert">{message}</div>
-                                )}
+
                                 {product.map((item, index) => (
                                     <div className="row">
                                         <div className="col-md-6">
@@ -147,6 +145,9 @@ const Viewproduct = () => {
                                                     <h5 className="float">Additional information</h5>
                                                     <textarea rows="1" className='Cart-input' placeholder="Size,length,colour,e.t.c" onChange={(e) => setinformation(e.target.value)}></textarea><br />
                                                 </div>
+                                            )}
+                                            {messdiv && (
+                                                <div className="alert alert-info text-center" role="alert">{message}</div>
                                             )}
                                             <button type="button" className="default-btn btn-bg-two" onClick={() => addtocart(item._id)}>Add to Cart</button>
                                             {/* <button type="submit" className="default-btn btn-bg-two"><a href={item.Link}>Add to Cart</a></button> */}
