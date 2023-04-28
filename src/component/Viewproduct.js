@@ -155,7 +155,7 @@ const Viewproduct = () => {
                     <div className="px-2 new-product">
                         <div className="container-fluid card p-2 mb-2">
                             <div className="title-box">
-                                <h2 className='text-white'>Similar Product</h2>
+                                <h2 className='text-white'>Similar</h2>
                             </div>
                             <div className="row">
                                 {files.map((item, index) => (
