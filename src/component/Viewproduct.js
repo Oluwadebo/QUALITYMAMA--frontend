@@ -25,6 +25,10 @@ const Viewproduct = () => {
     const [Additionalinformation, setAdditionalinformation] = useState(false)
 
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
         if (ViewproductId) {
             axios.post(`${baseUrl}Viewproduct`, { ViewproductId }).then((data) => {
                 if (data) {
