@@ -26,13 +26,14 @@ const Viewproduct = () => {
 
     useEffect(() => {
         if (ViewproductId) {
+            setAdditionalinformation(prev => false)
             axios.post(`${baseUrl}Viewproduct`, { ViewproductId }).then((data) => {
                 if (data) {
                     setproduct(data.data.result);
                     let res = data.data.result[0].selectedOption
                     if (res === "infomation") {
                         setAdditionalinformation(prev => true)
-                        console.log(information);
+                        // console.log(information);
 
                     }
                     const viewedProducts = JSON.parse(localStorage.getItem('RecentlyviewedProducts')) || [];

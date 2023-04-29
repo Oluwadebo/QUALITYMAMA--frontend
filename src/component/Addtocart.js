@@ -55,14 +55,6 @@ const Addtocart = () => {
                                     setfirst(prev => false)
                                 }
                             })
-                            const viewedProducts = JSON.parse(localStorage.getItem('RecentlyviewedProducts')) || [];
-                            setRecentlyViewed(viewedProducts);
-                            axios.post(`${baseUrl}Recentlyviewed`, viewedProducts).then((data) => {
-                                if (data) {
-                                    setDisRecentlyViewed(data.data.products);
-                                    setDisrecently(prev => true)
-                                }
-                            })
                         } else {
                             localStorage.removeItem('customer');
                             navigate("/Registration")
@@ -73,7 +65,18 @@ const Addtocart = () => {
             navigate("/Registration")
         }
 
+    }, [addtocart])
+    useEffect(() => {
+        const viewedProducts = JSON.parse(localStorage.getItem('RecentlyviewedProducts')) || [];
+        setRecentlyViewed(viewedProducts);
+        axios.post(`${baseUrl}Recentlyviewed`, viewedProducts).then((data) => {
+            if (data) {
+                setDisRecentlyViewed(data.data.products);
+                setDisrecently(prev => true)
+            }
+        })
     }, [])
+
 
     const total = addtocart.forEach((val, index) => {
         sum = sum + parseFloat(val.price)
@@ -133,7 +136,7 @@ const Addtocart = () => {
     const remove = (val) => {
         axios.post(`${baseUrl}removeaddtocart`, { id: val }).then((data) => {
             if (data) {
-                window.location.reload()
+                // window.location.reload()
             }
         })
     };
