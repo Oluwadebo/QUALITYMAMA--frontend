@@ -69,9 +69,12 @@ const Navbar = () => {
             <div>
                 <nav className="navbar navbar-expand-lg bg-light fixed-top coles">
                     <div className="container-fluid">
-                        <a className="navbar-brand">
-                            <img src={logo} alt="amaricanexpress" className="logo" />
-                        </a>
+                        <Link to="/" className='cart stye' >
+                            <a className="navbar-brand">
+                                <img src={logo} alt="amaricanexpress" className="logo" />
+                            </a>
+                        </Link>
+
                         <button
                             className="navbar-toggler"
                             type="button"

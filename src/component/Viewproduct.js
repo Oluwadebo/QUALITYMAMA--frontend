@@ -25,10 +25,6 @@ const Viewproduct = () => {
     const [Additionalinformation, setAdditionalinformation] = useState(false)
 
     useEffect(() => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        })
         if (ViewproductId) {
             axios.post(`${baseUrl}Viewproduct`, { ViewproductId }).then((data) => {
                 if (data) {
@@ -58,7 +54,7 @@ const Viewproduct = () => {
         } else {
             navigate("/")
         }
-    }, [])
+    }, [ViewproductId])
 
     const addtocart = (val) => {
         if (customer) {
@@ -106,7 +102,10 @@ const Viewproduct = () => {
             const updatedRecentlyViewedProducts = [val, ...recentlyViewed.filter((id) => id !== val)].slice(0, 6);
             localStorage.setItem('RecentlyviewedProducts', JSON.stringify(updatedRecentlyViewedProducts));
             setRecentlyViewed(updatedRecentlyViewedProducts);
-            window.location.reload()
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            })
         }
     }
 

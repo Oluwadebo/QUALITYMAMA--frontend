@@ -105,6 +105,7 @@ const Dashboard = () => {
                         </div>
                     </section>
                 </div>
+                <div className="card"></div>
                 <div className="px-3 onsale">
                     <section className="on-sale">
                         <div className="container-fluid card p-2">
