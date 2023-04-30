@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
 let baseUrl;
 if (process.env.NODE_ENV == 'production') {
-	baseUrl = 'https://qualitymamabackend.vercel.app/';
+	baseUrl = 'https://qualitymama.onrender.com/';
 } else {
 	baseUrl = 'http://localhost:5020/';
 }
