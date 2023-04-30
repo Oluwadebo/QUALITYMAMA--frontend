@@ -479,6 +479,19 @@ code {
   border: none;
   box-shadow: none !important;
 }
+.defaultb{
+  background-color: #16325a;
+  color: #ffffff;
+  border: solid #0278ff;
+  text-decoration: none;
+  z-index: 1;
+  transition: background-color 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+.defaultb:hover {
+  background-color: #0278ff;
+  transition: background-color 1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  background-image: linear-gradient(to top right, #0278ff);
+}
 .defaultbtn {
   padding: 10px 58px;
   text-align: center;

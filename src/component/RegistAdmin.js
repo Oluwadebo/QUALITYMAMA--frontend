@@ -11,6 +11,10 @@ const RegistAdmin = () => {
     const [Error, setError] = useState("");
     const [first, setfirst] = useState(true)
     const [loader, setloader] = useState(false)
+    const [loaders, setloaders] = useState(false)
+    const [Fpasswor, setFpasswor] = useState(false)
+    const [mail, setmail] = useState("");
+    const [mailErr, setmailErr] = useState("");
 
     let lower = new RegExp(`(?=.*[a-z])`);
     let upper = new RegExp(`(?=.*[A-Z])`);
@@ -106,6 +110,30 @@ const RegistAdmin = () => {
         }),
     });
 
+    const Fpassword = () => {
+        setFpasswor(prev => true)
+    }
+
+    const send = () => {
+        setloaders(prev => true)
+        if (mail != "") {
+            setmailErr()
+            axios.post(`${baseUrl}adminfp`, { mail }).then((data) => {
+                if (data) {
+                    let mes = data.data.message;
+                    if (mes != "Email not found") {
+                    } else {
+                        setloaders(prev => false)
+                        setmailErr("Email not found")
+                    }
+                }
+            })
+        } else {
+            setloaders(prev => false)
+            setmailErr("Please provide your email address below")
+        }
+    }
+
     const toggle = useRef();
     const i = useRef();
     const password = useRef();
@@ -200,28 +228,46 @@ const RegistAdmin = () => {
                                         </div>
                                     )}
                                 </div>
-                                <div className="row mt-3 text-white">
-                                    <div className="col-md-12">
-                                        <div className="row">
-                                            <div className="col-8">
-                                                <p style={{ opacity: "0.9" }}>Don't have an account?</p>
-                                            </div>
-                                            <div className="col-4">
-                                                <p>
-                                                    <b className="sig" onClick={register}>
-                                                        Sign-Up
-                                                    </b>
-                                                </p>
-                                            </div>
+                            </form>
+                            <div className="row mt-3 text-white">
+                                <div className="col-md-12">
+                                    <div className="row">
+                                        <div className="col-8">
+                                            <p style={{ opacity: "0.9" }}>Don't have an account?</p>
                                         </div>
-                                        <div className="">
+                                        <div className="col-4">
+                                            <p>
+                                                <b className="sig" onClick={register}>
+                                                    Sign-Up
+                                                </b>
+                                            </p>
+                                        </div>
+                                        <b className="text-danger"><marquee className="card"></marquee></b>
+                                        <p className="cart stye pt-2" style={{ opacity: "0.9" }} onClick={Fpassword}>Forget password</p>
+                                        {Fpasswor && (
+                                            <div className="">
+                                                <p>
+                                                    <b className="text-danger"><marquee className="card">{mailErr}</marquee></b>
+                                                </p>
+                                                <div className="d-flex">
+                                                    <input type="text" className="form-control" placeholder="Your email" onChange={(e) => setmail(e.target.value)} />
+                                                    <button type="submit" className="rounded defaultb" onClick={send}>Send</button>
+                                                    {loaders && (
+                                                        <div className="spin">
+                                                            <div className="loader"></div>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                    {/* <div className="">
                                             <Link to="/Forgetpassword" className='cart stye' >
                                                 <span>Forget password</span>
                                             </Link>
-                                        </div>
-                                    </div>
+                                        </div> */}
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     )}
 
