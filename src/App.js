@@ -8,6 +8,7 @@ import RegistAdmin from "./component/RegistAdmin";
 import Addtocart from "./component/Addtocart";
 import Viewproduct from "./component/Viewproduct";
 import Ordered from "./component/Ordered";
+import Forgetpassword from "./component/Forgetpassword";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/Addtocart" element={<Addtocart />} />
         <Route path="/Admin" element={<Admin />} />
         <Route path="/Viewproduct" element={<Viewproduct />} />
+        <Route path="/Forgetpassword" element={<Forgetpassword/>} />
         <Route path="/Dashboard" element={<Navigate to="/" />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

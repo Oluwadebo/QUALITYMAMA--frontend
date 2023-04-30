@@ -2,7 +2,7 @@ import React from "react";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { baseUrl } from "./endpoint";
 
@@ -187,18 +187,18 @@ const RegistAdmin = () => {
                                         </div>
                                     )}
                                     <label>&#x1F512;&nbsp; Your password</label>
-                                    
-                                        <button
-                                            type="submit"
-                                            className="defaultbtn btn-bg-two mt-2 mx-auto"
-                                        >
-                                            <b>Sign-In</b>
-                                        </button>
-                                            {loader && (
-                                            <div className="spin mt-2">
-                                                <div className="loader"></div>
-                                            </div>
-                                        )}
+
+                                    <button
+                                        type="submit"
+                                        className="defaultbtn btn-bg-two mt-2 mx-auto"
+                                    >
+                                        <b>Sign-In</b>
+                                    </button>
+                                    {loader && (
+                                        <div className="spin mt-2">
+                                            <div className="loader"></div>
+                                        </div>
+                                    )}
                                 </div>
                                 <div className="row mt-3 text-white">
                                     <div className="col-md-12">
@@ -213,6 +213,11 @@ const RegistAdmin = () => {
                                                     </b>
                                                 </p>
                                             </div>
+                                        </div>
+                                        <div className="">
+                                            <Link to="/Forgetpassword" className='cart stye' >
+                                                <span>Forget password</span>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
@@ -333,11 +338,11 @@ const RegistAdmin = () => {
                                     >
                                         <b>Sign-Up</b>
                                     </button>
-                                        {loader && (
-                                            <div className="spin mt-2">
-                                                <div className="loader"></div>
-                                            </div>
-                                        )}
+                                    {loader && (
+                                        <div className="spin mt-2">
+                                            <div className="loader"></div>
+                                        </div>
+                                    )}
                                 </div>
                                 <div className="row mt-3 text-white">
                                     <div className="col-md-12">
