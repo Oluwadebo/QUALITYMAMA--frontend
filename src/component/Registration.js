@@ -229,41 +229,41 @@ const Registration = () => {
                                         </div>
                                     )}
                                 </div>
-                                <div className="row mt-3 text-white">
-                                    <div className="col-md-12">
-                                        <div className="row">
-                                            <div className="col-8">
-                                                <p style={{ opacity: "0.9" }}>Don't have an account?</p>
-                                            </div>
-                                            <div className="col-4">
-                                                <p>
-                                                    <b className="sig" onClick={register}>
-                                                        Sign-Up
-                                                    </b>
-                                                </p>
-                                            </div>
-                                            <b className="text-danger"><marquee className="card"></marquee></b>
-                                            <p className="cart stye pt-2" style={{ opacity: "0.9" }} onClick={Fpassword}>Forget password</p>
-                                            {Fpasswor && (
-                                                <div className="">
-                                                    <p>
-                                                        <b className="text-danger"><marquee className="card">{mailErr}</marquee></b>
-                                                    </p>
-                                                    <div className="d-flex">
-                                                        <input type="text" className="form-control" placeholder="Your email" onChange={(e) => setmail(e.target.value)} />
-                                                        <button type="submit" className="rounded defaultb" onClick={send}>Send</button>
-                                                        {loaders && (
-                                                            <div className="spin">
-                                                                <div className="loader"></div>
-                                                            </div>
-                                                        )}
-                                                    </div>
-                                                </div>
-                                            )}
+                            </form>
+                            <div className="row mt-3 text-white">
+                                <div className="col-md-12">
+                                    <div className="row">
+                                        <div className="col-8">
+                                            <p style={{ opacity: "0.9" }}>Don't have an account?</p>
                                         </div>
+                                        <div className="col-4">
+                                            <p>
+                                                <b className="sig" onClick={register}>
+                                                    Sign-Up
+                                                </b>
+                                            </p>
+                                        </div>
+                                        <b className="text-danger"><marquee className="card"></marquee></b>
+                                        <p className="cart stye pt-2" style={{ opacity: "0.9" }} onClick={Fpassword}>Forget password</p>
+                                        {Fpasswor && (
+                                            <div className="">
+                                                <p>
+                                                    <b className="text-danger"><marquee className="card">{mailErr}</marquee></b>
+                                                </p>
+                                                <div className="d-flex">
+                                                    <input type="text" className="form-control" placeholder="Your email" onChange={(e) => setmail(e.target.value)} />
+                                                    <button type="submit" className="rounded defaultb" onClick={send}>Send</button>
+                                                    {loaders && (
+                                                        <div className="spin">
+                                                            <div className="loader"></div>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     )}
                     {!first && (
