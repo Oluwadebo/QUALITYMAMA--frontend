@@ -124,6 +124,9 @@ const Registration = () => {
                     if (mes != "Email not found") {
                         setloaders(prev => false)
                         setmailErr("Check your mail to rest your password")
+                        setTimeout(() => {
+                            setFpasswor(prev => false)                              
+                        }, 9000);
                     } else {
                         setloaders(prev => false)
                         setmailErr("Email not found")

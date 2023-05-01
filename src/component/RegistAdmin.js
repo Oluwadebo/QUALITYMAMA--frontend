@@ -125,6 +125,9 @@ const RegistAdmin = () => {
                     if (mes != "Email not found") {
                         setloaders(prev => false)
                         setmailErr("Check your mail to rest your password")
+                        setTimeout(() => {
+                            setFpasswor(prev => false)                              
+                        }, 8050);
                     } else {
                         setloaders(prev => false)
                         setmailErr("Email not found")
