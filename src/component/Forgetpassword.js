@@ -26,6 +26,23 @@ const Forgetpassword = () => {
             setloader(prev => true)
             if (values.confirmpassword === values.newpassword) {
                 setError();
+                axios.post(`${baseUrl}adminforget`, values).then((credentials) => {
+                    if (credentials) {
+                        let Err = credentials.data.message;
+                        if (Err != "Email not found") {
+                            if (Err == "updated") {
+                                setloader(prev => false)
+                                setError("Password reset successfuly");
+                                setTimeout(() => {
+                                    navigate("/RegistAdmin")                               
+                                }, 4000);
+                            }
+                        } else {
+                            setloader(prev => false)
+                            setError("Email not found");
+                        }
+                    }
+                })
             } else {
                 if (values.confirmpassword != values.newpassword) {
                     setloader(prev => false)

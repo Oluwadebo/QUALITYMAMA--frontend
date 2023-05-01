@@ -120,8 +120,11 @@ const RegistAdmin = () => {
             setmailErr()
             axios.post(`${baseUrl}adminfp`, { mail }).then((data) => {
                 if (data) {
+                    console.log(data.data);
                     let mes = data.data.message;
                     if (mes != "Email not found") {
+                        setloaders(prev => false)
+                        setmailErr("Check your mail to rest your password")
                     } else {
                         setloaders(prev => false)
                         setmailErr("Email not found")
