@@ -9,6 +9,7 @@ import Addtocart from "./component/Addtocart";
 import Viewproduct from "./component/Viewproduct";
 import Ordered from "./component/Ordered";
 import Forgetpassword from "./component/Forgetpassword";
+import Resetpassword from "./component/Resetpassword";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/Admin" element={<Admin />} />
         <Route path="/Viewproduct" element={<Viewproduct />} />
         <Route path="/Forgetpassword" element={<Forgetpassword/>} />
+        <Route path="/Resetpassword" element={<Resetpassword/>} />
         <Route path="/Dashboard" element={<Navigate to="/" />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

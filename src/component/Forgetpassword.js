@@ -49,24 +49,6 @@ const Forgetpassword = () => {
                     setError("Confirm password is not the same as New password");
                 }
             }
-            // axios.post(`${baseUrl}adminforget`, values).then((credentials) => {
-            //     if (credentials) {
-            //         let Err = credentials.data.message;
-            //         if (Err == "Email not found") {
-            //             setloader(prev => false)
-            //             setError("Email not found");
-            //         } else if (Err == "Invaild password") {
-            //             setloader(prev => false)
-            //             setError("Invaild password");
-            //         } else {
-            //             if (Err == "Token generated") {
-            //                 localStorage.Admin = credentials.data.token
-            //                 setloader(prev => false)
-            //                 navigate("/Admin")
-            //             }
-            //         }
-            //     }
-            // })
         },
         validationSchema: yup.object({
             email: yup

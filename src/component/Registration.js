@@ -11,6 +11,10 @@ const Registration = () => {
     const [Error, setError] = useState("");
     const [first, setfirst] = useState(true)
     const [loader, setloader] = useState(false)
+    const [mail, setmail] = useState("");
+    const [mailErr, setmailErr] = useState("");
+    const [loaders, setloaders] = useState(false)
+    const [Fpasswor, setFpasswor] = useState(false)
 
     let lower = new RegExp(`(?=.*[a-z])`);
     let upper = new RegExp(`(?=.*[A-Z])`);
@@ -105,6 +109,33 @@ const Registration = () => {
         }),
     });
 
+    const Fpassword = () => {
+        setFpasswor(prev => true)
+    }
+
+    const send = () => {
+        setloaders(prev => true)
+        if (mail != "") {
+            setmailErr()
+            axios.post(`${baseUrl}forgetpassword`, { mail }).then((data) => {
+                if (data) {
+                    console.log(data.data);
+                    let mes = data.data.message;
+                    if (mes != "Email not found") {
+                        setloaders(prev => false)
+                        setmailErr("Check your mail to rest your password")
+                    } else {
+                        setloaders(prev => false)
+                        setmailErr("Email not found")
+                    }
+                }
+            })
+        } else {
+            setloaders(prev => false)
+            setmailErr("Please provide your email address below")
+        }
+    }
+
     const toggle = useRef();
     const i = useRef();
     const password = useRef();
@@ -192,11 +223,11 @@ const Registration = () => {
                                     >
                                         <b>Sign-In</b>
                                     </button>
-                                        {loader && (
-                                            <div className="spin mt-2">
-                                                <div className="loader"></div>
-                                            </div>
-                                        )}
+                                    {loader && (
+                                        <div className="spin mt-2">
+                                            <div className="loader"></div>
+                                        </div>
+                                    )}
                                 </div>
                                 <div className="row mt-3 text-white">
                                     <div className="col-md-12">
@@ -211,13 +242,30 @@ const Registration = () => {
                                                     </b>
                                                 </p>
                                             </div>
+                                            <b className="text-danger"><marquee className="card"></marquee></b>
+                                            <p className="cart stye pt-2" style={{ opacity: "0.9" }} onClick={Fpassword}>Forget password</p>
+                                            {Fpasswor && (
+                                                <div className="">
+                                                    <p>
+                                                        <b className="text-danger"><marquee className="card">{mailErr}</marquee></b>
+                                                    </p>
+                                                    <div className="d-flex">
+                                                        <input type="text" className="form-control" placeholder="Your email" onChange={(e) => setmail(e.target.value)} />
+                                                        <button type="submit" className="rounded defaultb" onClick={send}>Send</button>
+                                                        {loaders && (
+                                                            <div className="spin">
+                                                                <div className="loader"></div>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     )}
-
                     {!first && (
                         <div className="shadow col-12 col-md-4 mx-auto px-4 pb-3 asd">
                             <h3 className="m-4 text-white">
@@ -308,11 +356,11 @@ const Registration = () => {
                                     >
                                         <b>Sign-Up</b>
                                     </button>
-                                        {loader && (
-                                            <div className="spin mt-2">
-                                                <div className="loader"></div>
-                                            </div>
-                                        )}
+                                    {loader && (
+                                        <div className="spin mt-2">
+                                            <div className="loader"></div>
+                                        </div>
+                                    )}
                                 </div>
                                 <div className="row mt-3 text-white">
                                     <div className="col-md-12">

@@ -264,11 +264,6 @@ const RegistAdmin = () => {
                                             </div>
                                         )}
                                     </div>
-                                    {/* <div className="">
-                                            <Link to="/Forgetpassword" className='cart stye' >
-                                                <span>Forget password</span>
-                                            </Link>
-                                        </div> */}
                                 </div>
                             </div>
                         </div>
