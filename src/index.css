@@ -407,6 +407,10 @@ code {
   margin: 20px 0;
   min-height: 40vh;
 }
+.newsproduct {
+  margin-top: 50px;
+  min-height: 40vh;
+}
 .on-sale {
   margin-top: -50px;
   min-height: 40vh;

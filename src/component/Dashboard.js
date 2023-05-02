@@ -47,7 +47,7 @@ const Dashboard = () => {
     const viewproduct = (val) => {
         if (val) {
             localStorage.Viewproduct = val
-            const updatedRecentlyViewedProducts = [val, ...recentlyViewed.filter((id) => id !== val)].slice(0, 6);
+            const updatedRecentlyViewedProducts = [val, ...recentlyViewed.filter((id) => id !== val)].slice(0, 9);
             localStorage.setItem('RecentlyviewedProducts', JSON.stringify(updatedRecentlyViewedProducts));
             setRecentlyViewed(updatedRecentlyViewedProducts);
             navigate(`/Viewproduct/${val}`)

@@ -60,7 +60,7 @@ const Viewproduct = () => {
             if (va.id) {
                 localStorage.Viewproduct = va.id;
                 let vad = va.id
-                const updatedRecentlyViewedProducts = [vad, ...recentlyViewed.filter((id) => id !== vad)].slice(0, 6);
+                const updatedRecentlyViewedProducts = [vad, ...recentlyViewed.filter((id) => id !== vad)].slice(0, 9);
                 localStorage.setItem('RecentlyviewedProducts', JSON.stringify(updatedRecentlyViewedProducts));
                 setRecentlyViewed(updatedRecentlyViewedProducts);
                 window.location.reload()
@@ -140,9 +140,9 @@ const Viewproduct = () => {
                                         </div>
                                         <div className="col-md-6">
                                             <div className="title-box mt-2 mt-md-0">
-                                                <h2 className='text-white'>Details</h2>
+                                                <h5 className='text-white'>Details</h5>
                                             </div>
-                                            <h2>{item.product}</h2>
+                                            <h5>{item.product}</h5>
                                             <i className="fa fa-star"></i>
                                             <i className="fa fa-star"></i>
                                             <i className="fa fa-star"></i>
@@ -168,7 +168,7 @@ const Viewproduct = () => {
                             </div>
                         </div>
                     </section>
-                    <div className="px-2 new-product">
+                    <div className="px-2 newsproduct">
                         <div className="container-fluid card p-2 mb-2">
                             <div className="title-box">
                                 <h2 className='text-white'>Similar</h2>
@@ -188,7 +188,7 @@ const Viewproduct = () => {
                             <div className="card">
                                 <div className="p-2">
                                     <div className="title-box">
-                                        <h5 className='text-white'>Recently Viewed</h5>
+                                        <h5 className='text-white pt-1'>Recently Viewed</h5>
                                     </div>
                                     <Carousel showDots={false} responsive={responsive}>
                                         {DisrecentlyViewed.map((item, index) => (
