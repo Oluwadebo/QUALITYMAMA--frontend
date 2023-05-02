@@ -6,6 +6,9 @@ import axios from 'axios';
 import { baseUrl } from "./endpoint";
 import Navbar from './Navbar'
 import { useParams } from 'react-router-dom';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import { responsive } from "./Data";
 
 const Viewproduct = () => {
     const navigate = useNavigate();
@@ -126,7 +129,6 @@ const Viewproduct = () => {
                     <section className="single-product">
                         <div className="container-fluid px-2">
                             <div className="card p-2">
-
                                 {product.map((item, index) => (
                                     <div className="row">
                                         <div className="col-md-6">
@@ -148,6 +150,7 @@ const Viewproduct = () => {
                                             <i className="fa fa-star"></i> <br /><hr />
                                             <h5 className='float'> {item.description}</h5>
                                             <p className="price"><b>₦</b> {item.price}</p>
+                                            <span className="prices"><del>{item.Pprice}</del></span>
                                             {Additionalinformation && (
                                                 <div className="">
                                                     <h5 className="float">Additional information</h5>
@@ -170,44 +173,33 @@ const Viewproduct = () => {
                             <div className="title-box">
                                 <h2 className='text-white'>Similar</h2>
                             </div>
-                            <div className="row">
+                            <Carousel showDots={false} responsive={responsive}>
                                 {files.map((item, index) => (
-                                    <div className="col-lg-3 col-md-6 my-3 mt-md-0 scal">
-                                        <div className="product-top">
-                                            <div className="" onClick={() => viewproduct(item._id)}>
-                                                <div className="imgBx">
-                                                    <img src={item.file} className="h-100" alt='zoom' />
-                                                </div>
-                                            </div>
-                                            <div className="product-botttom text-center mt-3">
-                                                <h3>{item.product}</h3>
-                                            </div>
+                                    <div className="cards scal" onClick={() => viewproduct(item._id)}>
+                                        <img className="product--image" src={item.file} alt="product image" />
+                                        <div className="cardsp py-1">
+                                            <p>{item.product} <br /> <span className="price"><b>₦</b> {item.price}<br /><del>{item.Pprice}</del></span></p>
                                         </div>
                                     </div>
                                 ))}
-                            </div>
+                            </Carousel>
                         </div>
                         {Disrecently && (
                             <div className="card">
                                 <div className="p-2">
-                                    <h5>Recently Viewed</h5>
-                                    <div className="row">
+                                    <div className="title-box">
+                                        <h5 className='text-white'>Recently Viewed</h5>
+                                    </div>
+                                    <Carousel showDots={false} responsive={responsive}>
                                         {DisrecentlyViewed.map((item, index) => (
-                                            <div className="col-lg-2 col-md-3 my-3 mt-md-0 scal">
-                                                <div className="producttop">
-                                                    <div className="" onClick={() => viewproduct(item._id)}>
-                                                        <div className="imgBx">
-                                                            <img src={item.file} className="h-100" alt='zoom' />
-                                                        </div>
-                                                    </div>
-                                                    <div className="product-botttom text-center mt-3">
-                                                        <h3>{item.product}</h3>
-                                                        <h5><b>₦</b> {item.price}</h5>
-                                                    </div>
+                                            <div className="cards scal" onClick={() => viewproduct(item._id)}>
+                                                <img className="product--image" src={item.file} alt="product image" />
+                                                <div className="cardsp py-1">
+                                                    <p>{item.product} <br /> <span className="price"><b>₦</b> {item.price}<br /><del>{item.Pprice}</del></span></p>
                                                 </div>
                                             </div>
                                         ))}
-                                    </div>
+                                    </Carousel>
                                 </div>
                             </div>
                         )}

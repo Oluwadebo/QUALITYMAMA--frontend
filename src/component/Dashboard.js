@@ -4,24 +4,16 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import { baseUrl } from "./endpoint";
 import Navbar from './Navbar'
-import stable1 from "./asset/stable1.jpg"
-import stable2 from "./asset/stable2.jpg"
-import stable3 from "./asset/stable3.jpg"
-import stable4 from "./asset/stable4.jpg"
 import caro1 from "./asset/caro1.jpg"
 import caro2 from "./asset/caro2.jpg"
 import caro6 from "./asset/caro6.jpg"
-import zoom4 from "./asset/zoom4.jpg"
-import zoom3 from "./asset/zoom3.jpg"
-import zoom5 from "./asset/zoom5.jpg"
 import original from "./asset/original.png"
 import returnoninvestment from "./asset/return-on-investment.png"
 import debitcard from "./asset/debit-card.png"
 import Footer from './Footer';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import Product from "./Product";
-import { productData, responsive } from "./Data";
+import { responsive } from "./Data";
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -61,15 +53,6 @@ const Dashboard = () => {
             navigate(`/Viewproduct/${val}`)
         }
     }
-
-    const product = productData.map((item) => (
-        <Product
-            name={item.name}
-            url={item.imageurl}
-            price={item.price}
-            description={item.description}
-        />
-    ));
 
     return (
         <>
@@ -118,59 +101,41 @@ const Dashboard = () => {
                         </div>
                     </section>
                 </div>
-                {/* {product} */}
-                <Carousel showDots={true} responsive={responsive}>
-                    {product}
-                </Carousel>
-                <div className="px-3 onsale">
+                <div className="px-3">
                     <section className="on-sale">
                         <div className="container-fluid card p-2">
                             <div className="title-box">
                                 <h2>On Sale</h2>
                             </div>
-                            <div className="row">
+                            <Carousel showDots={false} responsive={responsive}>
                                 {sale.map((item, index) => (
-                                    <div className="col-lg-3 col-md-6 my-3 mt-md-0 scal">
-                                        <div className="product-top">
-                                            <div className="" onClick={() => viewproduct(item._id)}>
-                                                <div className="imgBx">
-                                                    <img src={item.file} className="h-100" alt='zoom' />
-                                                </div>
-                                            </div>
-                                            <div className="product-botttom text-center mt-3">
-                                                <h3>{item.product}</h3>
-                                                <h5><b>₦</b> {item.price}</h5>
-                                            </div>
+                                    <div className="cards scal" onClick={() => viewproduct(item._id)}>
+                                        <img className="product--image" src={item.file} alt="product image" />
+                                        <div className="cardsp py-1">
+                                            <p>{item.product} <br /> <span className="price"><b>₦</b> {item.price}<br /><del>{item.Pprice}</del></span></p>
                                         </div>
                                     </div>
                                 ))}
-                            </div>
+                            </Carousel>
                         </div>
                     </section>
                 </div>
-                <div className="px-3 new-product">
+                <div className="px-3">
                     <section className="new-product">
                         <div className="container-fluid card p-2">
                             <div className="title-box">
                                 <h2>New Arrivals</h2>
                             </div>
-                            <div className="row">
+                            <Carousel showDots={false} responsive={responsive}>
                                 {files.map((item, index) => (
-                                    <div className="col-lg-3 col-md-6 my-3 mt-md-0 scal">
-                                        <div className="product-top">
-                                            <div className="" onClick={() => viewproduct(item._id)}>
-                                                <div className="imgBx">
-                                                    <img src={item.file} className="h-100" alt='zoom' />
-                                                </div>
-                                            </div>
-                                            <div className="product-botttom text-center mt-3">
-                                                <h5>{item.product}</h5>
-                                                <h5><b>₦</b> {item.price}</h5>
-                                            </div>
+                                    <div className="cards scal" onClick={() => viewproduct(item._id)}>
+                                        <img className="product--image" src={item.file} alt="product image" />
+                                        <div className="cardsp py-1">
+                                            <p>{item.product} <br /> <span className="price"><b>₦</b> {item.price}<br /><del>{item.Pprice}</del></span></p>
                                         </div>
                                     </div>
                                 ))}
-                            </div>
+                            </Carousel>
                         </div>
                     </section>
                 </div>
