@@ -146,7 +146,7 @@ const Addtocart = () => {
             const updatedRecentlyViewedProducts = [val, ...recentlyViewed.filter((id) => id !== val)].slice(0, 6);
             localStorage.setItem('RecentlyviewedProducts', JSON.stringify(updatedRecentlyViewedProducts));
             setRecentlyViewed(updatedRecentlyViewedProducts);
-            navigate("/Viewproduct")
+            navigate(`/Viewproduct/${val}`)
         }
     }
 

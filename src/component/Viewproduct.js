@@ -5,9 +5,12 @@ import Footer from './Footer'
 import axios from 'axios';
 import { baseUrl } from "./endpoint";
 import Navbar from './Navbar'
+import { useParams } from 'react-router-dom';
 
 const Viewproduct = () => {
     const navigate = useNavigate();
+    const Params = useParams()
+    let va = Params;
     const customer = localStorage.customer;
     const ViewproductId = localStorage.Viewproduct;
     const storedData = localStorage.myData;
@@ -33,7 +36,6 @@ const Viewproduct = () => {
                     let res = data.data.result[0].selectedOption
                     if (res === "infomation") {
                         setAdditionalinformation(prev => true)
-
                     }
                     const viewedProducts = JSON.parse(localStorage.getItem('RecentlyviewedProducts')) || [];
                     setRecentlyViewed(viewedProducts);
@@ -52,7 +54,16 @@ const Viewproduct = () => {
                 }
             })
         } else {
-            navigate("/")
+            if (va.id) {
+                localStorage.Viewproduct = va.id;
+                let vad = va.id
+                const updatedRecentlyViewedProducts = [vad, ...recentlyViewed.filter((id) => id !== vad)].slice(0, 6);
+                localStorage.setItem('RecentlyviewedProducts', JSON.stringify(updatedRecentlyViewedProducts));
+                setRecentlyViewed(updatedRecentlyViewedProducts);
+                window.location.reload()
+            } else {
+                navigate("/")
+            }
         }
     }, [ViewproductId])
 
@@ -102,10 +113,8 @@ const Viewproduct = () => {
             const updatedRecentlyViewedProducts = [val, ...recentlyViewed.filter((id) => id !== val)].slice(0, 6);
             localStorage.setItem('RecentlyviewedProducts', JSON.stringify(updatedRecentlyViewedProducts));
             setRecentlyViewed(updatedRecentlyViewedProducts);
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            })
+            navigate(`/Viewproduct/${val}`)
+            window.scrollTo({ top: 0, behavior: "smooth" })
         }
     }
 

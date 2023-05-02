@@ -21,7 +21,7 @@ function App() {
         <Route path="/RegistAdmin" element={<RegistAdmin />} />
         <Route path="/Addtocart" element={<Addtocart />} />
         <Route path="/Admin" element={<Admin />} />
-        <Route path="/Viewproduct" element={<Viewproduct />} />
+        <Route path="/Viewproduct/:id" element={<Viewproduct />} />
         <Route path="/Forgetpassword" element={<Forgetpassword/>} />
         <Route path="/Resetpassword" element={<Resetpassword/>} />
         <Route path="/Dashboard" element={<Navigate to="/" />} />
