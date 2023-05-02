@@ -18,6 +18,10 @@ import original from "./asset/original.png"
 import returnoninvestment from "./asset/return-on-investment.png"
 import debitcard from "./asset/debit-card.png"
 import Footer from './Footer';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import Product from "./Product";
+import { productData, responsive } from "./Data";
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -58,10 +62,19 @@ const Dashboard = () => {
         }
     }
 
+    const product = productData.map((item) => (
+        <Product
+            name={item.name}
+            url={item.imageurl}
+            price={item.price}
+            description={item.description}
+        />
+    ));
+
     return (
         <>
             <Navbar />
-            <div className="container-fluid mt-5 pt-4 mb-4 p-0 m-0">
+            <div className="container-fluid mt-5 pt-3 mb-4 p-0 m-0">
                 <div id="carouselExampleDark" className="carousel slide" data-bs-ride="carousel">
                     <div className="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1" id='clicked'></button>
@@ -105,7 +118,10 @@ const Dashboard = () => {
                         </div>
                     </section>
                 </div>
-                <div className="card"></div>
+                {/* {product} */}
+                <Carousel showDots={true} responsive={responsive}>
+                    {product}
+                </Carousel>
                 <div className="px-3 onsale">
                     <section className="on-sale">
                         <div className="container-fluid card p-2">

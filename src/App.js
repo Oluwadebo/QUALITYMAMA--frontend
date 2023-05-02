@@ -10,6 +10,7 @@ import Viewproduct from "./component/Viewproduct";
 import Ordered from "./component/Ordered";
 import Forgetpassword from "./component/Forgetpassword";
 import Resetpassword from "./component/Resetpassword";
+import Product from "./component/Product";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/Viewproduct/:id" element={<Viewproduct />} />
         <Route path="/Forgetpassword" element={<Forgetpassword/>} />
         <Route path="/Resetpassword" element={<Resetpassword/>} />
+        <Route path="/Product" element={<Product/>} />
         <Route path="/Dashboard" element={<Navigate to="/" />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

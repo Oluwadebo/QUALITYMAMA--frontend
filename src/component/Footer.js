@@ -36,11 +36,11 @@ const Footer = () => {
                                     </ul>
                                 </div>
                             </div>
-                            <div className="col-4 col-md-3">
+                            <div className="col-8 col-md-3">
                                 <h1>Useful Links</h1>
                                 <p><span className='priv' onClick={priv} >Privacy Policy</span> <br />
                                     {privacy && (
-                                        <span className='test'>We respect your privacy and are committed to protecting your personal information. We may collect contact and payment information to process orders and improve our services. We will not share your information with third parties except as necessary to provide services or as required by law. You may opt out of promotional emails and request deletion of personal information. Our full privacy policy can be found on our website. or <br /> please contact us at <a href="mailto:qualitymamaddg@gmail.com"><i>qualitymamaddg@gmail.com</i></a>
+                                        <span className='test'>We respect your privacy and are committed to protecting your personal information. We may collect contact to process orders and improve our services. We will not share your information with third parties except as necessary to provide services or as required by law. You may opt out of promotional emails and request deletion of personal information. Our full privacy policy can be found on our website. or <br /> please contact us at <a href="mailto:qualitymamaddg@gmail.com"><i>qualitymamaddg@gmail.com</i></a>
                                         </span>
                                     )}
                                 </p>
@@ -51,7 +51,7 @@ const Footer = () => {
                                 </p>
                                 <p><span className='priv' onClick={Retur} >Return Policy</span> <br />
                                     {Return && (
-                                        <span className='test'>We offer a 1-day return policy on all items purchased from our website. Items must be in their original packaging and unused condition. To initiate a return, please contact our customer support team. Shipping charges are non-refundable.</span>
+                                        <span className='test'>We offer a 24-hours return policy on all items purchased from our website. Items must be in their original packaging and unused condition. To initiate a return, please contact our customer support team. Shipping charges are non-refundable.</span>
                                     )}
                                 </p>
                             </div>
@@ -60,7 +60,7 @@ const Footer = () => {
                                 <p>About Us</p>
                                 <p>Contact Us</p>
                             </div>
-                            <div className="col-4 col-md-2 lni">
+                            <div className="col-12 col-md-2 lni">
                                 <h1>Follow Us On</h1>
                                 <p><i className="fa fa-facebook"></i>Facebook</p>
                                 <p><i className="fa fa-linkedin"></i>Linkedin</p>
