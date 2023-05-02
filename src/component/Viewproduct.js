@@ -149,8 +149,8 @@ const Viewproduct = () => {
                                             <i className="fa fa-star"></i>
                                             <i className="fa fa-star"></i> <br /><hr />
                                             <h5 className='float'> {item.description}</h5>
-                                            <p className="price"><b>₦</b> {item.price}</p>
-                                            <span className="prices"><del>{item.Pprice}</del></span>
+                                            <p><span className="price"> <b>₦</b> {item.price} </span><br />
+                                                <span className="prices"><del>{item.Pprice}</del></span></p>
                                             {Additionalinformation && (
                                                 <div className="">
                                                     <h5 className="float">Additional information</h5>

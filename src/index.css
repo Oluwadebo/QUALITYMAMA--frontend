@@ -380,7 +380,7 @@ code {
   background-color: #fff;
   word-wrap: break-word;
   background-color: #fff;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  /* box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important; */
 }
 .product-botttom .fa {
   color: #fdbc00;
@@ -390,7 +390,7 @@ code {
   font-size: 15px;
   font-weight: bold;
 }
-.product-botttom .float1 {
+.product-botttom price1 {
   float: left;
 }
 .product-botttom .float2 {
@@ -483,7 +483,7 @@ code {
 }
 .single-product .price {
   color: #16325a;
-  font-size: 26px;
+  font-size: 20px;
   font-weight: bold;
   padding-top: 10px;
 }
