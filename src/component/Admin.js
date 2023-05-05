@@ -6,6 +6,9 @@ import { baseUrl } from "./endpoint";
 import Navbar from './Navbar';
 import Upload from './Upload';
 import Footer from './Footer';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import { responsiveadmin } from "./Data";
 
 const Admin = () => {
     const navigate = useNavigate();
@@ -83,29 +86,25 @@ const Admin = () => {
                                 )}
                                 {!pageloader && (
                                     <div className="row">
-                                        {adminfiles.map((item, index) => (
-                                            <div className="col-md-4 scal">
-                                                <div className="producop">
-                                                    <div className="imgBx">
-                                                        <img src={item.file} className="h-100" />
-                                                    </div>
-                                                    <div className="product-botttom mt-2">
-                                                        <h3><span className='float1'>{item.product}</span> <span className='float2'><b>₦</b> {item.price} </span></h3><br />
-                                                        <h3 className='float2 opaci'><del>{item.Pprice}</del></h3><br />
-
-                                                        <h5 className='float'>{item.description}</h5>
-                                                    </div>
-                                                    <div className="row">
-                                                        <div className="col-6">
-                                                            <p className='px-5 fa fa-edit clo py-3' name="id" onClick={() => edit(item._id)}></p>
-                                                        </div>
-                                                        <div className="col-6">
-                                                            <p className='px-5 fa fa-trash colo py-3' name="id" onClick={() => delet(item._id)}></p>
+                                        <Carousel showDots={false} responsive={responsiveadmin}>
+                                            {adminfiles.map((item, index) => (
+                                                <div className="cards scal">
+                                                    <img className="product--image" src={item.file} alt="product image" />
+                                                    <div className="cardsp py-1">
+                                                        <p>{item.product} <br /> <span className="price"><b>₦</b> {item.price}<br /><del>{item.Pprice}</del></span></p>
+                                                        <p className='mx-auto'>{item.description}</p>
+                                                        <div className="row">
+                                                            <div className="col-6">
+                                                                <p className='fa fa-edit clo py-3' name="id" onClick={() => edit(item._id)}></p>
+                                                            </div>
+                                                            <div className="col-6">
+                                                                <p className='fa fa-trash colo py-3' name="id" onClick={() => delet(item._id)}></p>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        ))}
+                                            ))}
+                                        </Carousel>
                                     </div>
                                 )}
                             </div>
