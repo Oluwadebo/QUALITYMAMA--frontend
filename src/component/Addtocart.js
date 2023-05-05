@@ -5,6 +5,9 @@ import axios from 'axios';
 import { baseUrl } from "./endpoint";
 import { Link, useNavigate } from 'react-router-dom'
 import Navbar from './Navbar'
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import { responsive } from "./Data";
 
 const Addtocart = () => {
     const customer = localStorage.customer;
@@ -29,6 +32,7 @@ const Addtocart = () => {
 
     let sum = 0;
     useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" })
         if (customer) {
             axios.get(`${baseUrl}dashboard`,
                 {
@@ -173,21 +177,16 @@ const Addtocart = () => {
                                         <div className="p-2">
                                             <h5>Recently Viewed</h5>
                                             <div className="row">
-                                                {DisrecentlyViewed.map((item, index) => (
-                                                    <div className="col-lg-2 col-md-3 my-3 mt-md-0 scal">
-                                                        <div className="producttop">
-                                                            <div className="" onClick={() => viewproduct(item._id)}>
-                                                                <div className="imgBx">
-                                                                    <img src={item.file} className="h-100" alt='zoom' />
-                                                                </div>
-                                                            </div>
-                                                            <div className="product-botttom text-center mt-3">
-                                                                <h3>{item.product}</h3>
-                                                                <h5><b>₦</b> {item.price}</h5>
+                                                <Carousel showDots={false} responsive={responsive}>
+                                                    {DisrecentlyViewed.map((item, index) => (
+                                                        <div className="cards scal" onClick={() => viewproduct(item._id)}>
+                                                            <img className="product-image" src={item.file} alt="product image" />
+                                                            <div className="cardsp py-1">
+                                                                <p>{item.product} <br /> <span className="price"><b>₦</b> {item.price}<br /><del>{item.Pprice}</del></span></p>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                ))}
+                                                    ))}
+                                                </Carousel>
                                             </div>
                                         </div>
                                     </div>

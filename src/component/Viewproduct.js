@@ -31,6 +31,7 @@ const Viewproduct = () => {
     const [Additionalinformation, setAdditionalinformation] = useState(false)
 
     useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" })
         if (ViewproductId) {
             setAdditionalinformation(prev => false)
             axios.post(`${baseUrl}Viewproduct`, { ViewproductId }).then((data) => {
@@ -63,7 +64,7 @@ const Viewproduct = () => {
                 const updatedRecentlyViewedProducts = [vad, ...recentlyViewed.filter((id) => id !== vad)].slice(0, 9);
                 localStorage.setItem('RecentlyviewedProducts', JSON.stringify(updatedRecentlyViewedProducts));
                 setRecentlyViewed(updatedRecentlyViewedProducts);
-                window.location.reload()
+                // window.location.reload()
             } else {
                 navigate("/")
             }
@@ -149,8 +150,7 @@ const Viewproduct = () => {
                                             <i className="fa fa-star"></i>
                                             <i className="fa fa-star"></i> <br /><hr />
                                             <h5 className='float'> {item.description}</h5>
-                                            <p><span className="price"> <b>₦</b> {item.price} </span><br />
-                                                <span className="prices"><del>{item.Pprice}</del></span></p>
+                                            <p><span className="price"><b>₦</b> {item.price}</span><br/><span className="prices"><del>{item.Pprice}</del></span></p>
                                             {Additionalinformation && (
                                                 <div className="">
                                                     <h5 className="float">Additional information</h5>
@@ -193,7 +193,7 @@ const Viewproduct = () => {
                                     <Carousel showDots={false} responsive={responsive}>
                                         {DisrecentlyViewed.map((item, index) => (
                                             <div className="cards scal" onClick={() => viewproduct(item._id)}>
-                                                <img className="product--image" src={item.file} alt="product image" />
+                                                <img className="product-image" src={item.file} alt="product image" />
                                                 <div className="cardsp py-1">
                                                     <p>{item.product} <br /> <span className="price"><b>₦</b> {item.price}<br /><del>{item.Pprice}</del></span></p>
                                                 </div>
