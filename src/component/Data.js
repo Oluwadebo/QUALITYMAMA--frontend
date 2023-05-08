@@ -21,7 +21,7 @@ export const responsive = {
 export const responsiveadmin = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 1024 },
-    items: 4,
+    items: 3,
     slidesToSlide: 2,
   },
   desktop: {

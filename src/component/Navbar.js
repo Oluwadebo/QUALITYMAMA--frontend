@@ -113,6 +113,7 @@ const Navbar = () => {
                                         </span> <span> Cart</span></i>
                                     </span>
                                 </Link>
+
                                 {/* <Link
                                     to="/Ordered"
                                     className='cart stye'
@@ -139,6 +140,25 @@ const Navbar = () => {
                                         <i className="fa fs-5 fa-sign-out mx-md-4 mx-3 my-3 my-md-0 stye" onClick={logout}> Log Out </i>
                                     </span>
                                 )}
+                            </div>
+                            <div className="row">
+                                <div className="col-12">
+                                    <div className="bor d-block d-md-none">
+                                        <ul>
+                                            <li>Male Fashion & Apparel</li>
+                                            <li>Female Fashion & Apparel</li>
+                                            <li>Beauty & Personal Care</li>
+                                            <li>Sports-wear</li>
+                                            <li>Lingerie</li>
+                                            <li>Phone & Accessories</li>
+                                            <li>Footwear</li>
+                                            <li>Books-media</li>
+                                            <li>Hand-made</li>
+                                            <li>Furniture</li>
+                                            <li>Other Category</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

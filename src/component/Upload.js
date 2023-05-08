@@ -32,7 +32,7 @@ const Upload = () => {
       setErr("")
       setloader(prev => true)
       let Pprice = `₦ ${Ppice}`;
-      const userdata = { file, product, price, adminId, selectedOption, description,Pprice }
+      const userdata = { file, product, price, adminId, selectedOption, description, Pprice }
       axios.post(`${baseUrl}files`, userdata).then((credentials) => {
         if (credentials) {
           let info = credentials.data.message;
@@ -60,7 +60,7 @@ const Upload = () => {
         setErr("product description input field is required")
       } else if (price == "") {
         setErr("product price input field is required")
-      }else if (Ppice == "") {
+      } else if (Ppice == "") {
         setErr("product Previous price input field is required")
       } else if (selectedOption == "") {
         setErr("Category input field is required")
@@ -93,19 +93,20 @@ const Upload = () => {
               <input type="text" className="form-control my-2" placeholder="Product Previous price" onChange={(e) => setPprice(e.target.value)} />
               <select id="selectOptions" className="select" value={selectedOption} onChange={(e) => handleSelectChange(e)}>
                 <option value="">Select your Category</option>
-                <option value="clothing">clothing</option>
-                <option value="electronics">electronics</option>
-                <option value="home-garden">home-garden</option>
-                <option value="beauty">beauty</option>
-                <option value="sports">sports</option>
-                <option value="toys-games">toys-games</option>
+                <option value="Carouse">Carouse</option>
                 <option value="Onsale">Onsale</option>
                 <option value="fashion">fashion</option>
-                <option value="infomation">infomation</option>
-                <option value="automotive">automotive</option>
                 <option value="books-media">books-media</option>
-                <option value="pet-supplies">pet-supplies</option>
                 <option value="hand-made">hand-made</option>
+                <option value="Male Fashion & Apparel">Male Fashion & Apparel</option>
+                <option value="Female Fashion & Apparel">Female Fashion & Apparel</option>
+                <option value="Beauty & Personal Care">Beauty & Personal Care</option>
+                <option value="Sports-wear">Sports-wear</option>
+                <option value="Lingerie">Lingerie</option>
+                <option value="Phone & Accessories">Phone & Accessories</option>
+                <option value="Footwear">Footwear</option>
+                <option value="Furniture">Furniture</option>
+                <option value=">Other Category">Other Category</option>
               </select>
               {/* <input type="url" className="form-control my-2" placeholder="Product Link" onChange={(e) => setLink(e.target.value)} /> */}
               <button className="btn form-control py-3 mt-3 asdb" onClick={upload}>Upload

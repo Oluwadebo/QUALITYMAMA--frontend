@@ -92,7 +92,7 @@ const Admin = () => {
                                                     <img className="product--image" src={item.file} alt="product image" />
                                                     <div className="cardsp py-1">
                                                         <p>{item.product} <br /> <span className="price"><b>₦</b> {item.price}<br /><del>{item.Pprice}</del></span></p>
-                                                        <p className='mx-auto'>{item.description}</p>
+                                                        <p>{item.description}</p>
                                                         <div className="row">
                                                             <div className="col-6">
                                                                 <p className='fa fa-edit clo py-3' name="id" onClick={() => edit(item._id)}></p>

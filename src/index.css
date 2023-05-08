@@ -19,6 +19,22 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-text-size-adjust: 100%;
 }
+/* .header{
+  overflow: hidden;
+} */
+.bor{
+  background-color: #2196f3;
+  color: #fff;
+}
+.bor ul li {
+  margin-left: -16px;
+  list-style-type: none;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.bor ul li:hover {
+  color: orange;
+}
 .fis {
   min-height: 38vh;
 }
@@ -276,7 +292,7 @@ code {
 }
 .product-to .imgBx {
   position: relative;
-  height: 70vh;
+  height: 45vh;
   width: 100%;
 }
 .product-to .imgBx img {

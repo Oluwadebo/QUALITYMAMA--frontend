@@ -21,6 +21,7 @@ const Dashboard = () => {
     const [sale, setsale] = useState([])
     const [fashion, setfashion] = useState([])
     const [recentlyViewed, setRecentlyViewed] = useState([]);
+    const [Carouse, setCarouse] = useState([])
 
     useEffect(() => {
         axios.get(`${baseUrl}goods`).then((data) => {
@@ -36,6 +37,12 @@ const Dashboard = () => {
                         axios.post(`${baseUrl}fashion`, { fashio }).then((data) => {
                             if (data) {
                                 setfashion(data.data.result)
+                                let Carous = "Carouse"
+                                axios.post(`${baseUrl}Carouse`, { Carous }).then((data) => {
+                                    if (data) {
+                                        setCarouse(data.data.result)
+                                    }
+                                })
                             }
                         })
                     }
@@ -58,29 +65,41 @@ const Dashboard = () => {
         <>
             <Navbar />
             <div className="container-fluid mt-5 pt-3 mb-4 p-0 m-0">
-                <div id="carouselExampleDark" className="carousel slide" data-bs-ride="carousel">
-                    <div className="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1" id='clicked'></button>
-                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
-                    <div className="carousel-inner">
-                        <div className="carousel-item active" data-bs-interval="2000">
-                            <div className="imggi">
-                                <img src={caro1} className="w-100" alt="..." />
+                <div className="container-fluid">
+                    <section className='header'>
+                        <div className="row">
+                            <div className="col-md-2 bor d-none d-md-block">
+                                <ul>
+                                    <li>Male Fashion & Apparel</li>
+                                    <li>Female Fashion & Apparel</li>
+                                    <li>Beauty & Personal Care</li>
+                                    <li>Sports-wear</li>
+                                    <li>Lingerie</li>
+                                    <li>Phone & Accessories</li>
+                                    <li>Footwear</li>
+                                    <li>Books-media</li>
+                                    <li>Hand-made</li>
+                                    <li>Furniture</li>
+                                    <li>Other Category</li>
+                                </ul>
+                            </div>
+                            <div className="col-md-10">
+                                <div id="carouselExampleDark" className="carousel slide" data-bs-ride="carousel">
+                                    <div className="carousel-inner">
+                                        <div className="row">
+                                            {Carouse.map((item, index) => (
+                                                <div className="carousel-item active" data-bs-interval="2000">
+                                                    <div className="imggi">
+                                                        <img src={item.file} className="w-100" alt="..." />
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div className="carousel-item" data-bs-interval="2000">
-                            <div className="imggi">
-                                <img src={caro2} className="w-100" alt="..." />
-                            </div>
-                        </div>
-                        <div className="carousel-item" data-bs-interval="2000">
-                            <div className="imggi">
-                                <img src={caro6} className="w-100" alt="..." />
-                            </div>
-                        </div>
-                    </div>
+                    </section>
                 </div>
                 <div className="px-3">
                     <section className="feature-categories">
@@ -110,7 +129,7 @@ const Dashboard = () => {
                             <Carousel showDots={false} responsive={responsive}>
                                 {sale.map((item, index) => (
                                     <div className="cards scal" onClick={() => viewproduct(item._id)}>
-                                        <img className="product--image" src={item.file} alt="product image" />
+                                        <img className="product--image" src={item.file} alt="product" />
                                         <div className="cardsp py-1">
                                             <p>{item.product} <br /> <span className="price"><b>₦</b> {item.price}<br /><del>{item.Pprice}</del></span></p>
                                         </div>
@@ -129,7 +148,7 @@ const Dashboard = () => {
                             <Carousel showDots={false} responsive={responsive}>
                                 {files.map((item, index) => (
                                     <div className="cards scal" onClick={() => viewproduct(item._id)}>
-                                        <img className="product--image" src={item.file} alt="product image" />
+                                        <img className="product--image" src={item.file} alt="product" />
                                         <div className="cardsp py-1">
                                             <p>{item.product} <br /> <span className="price"><b>₦</b> {item.price}<br /><del>{item.Pprice}</del></span></p>
                                         </div>
