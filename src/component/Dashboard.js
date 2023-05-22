@@ -72,6 +72,12 @@ const Dashboard = () => {
             navigate(`/Viewproduct/${val}`)
         }
     }
+
+    const ategory = (vals) => {
+        // console.log(vals);
+        navigate(`/Category/${vals}`)
+    }
+
     return (
         <>
             <Navbar />
@@ -81,17 +87,17 @@ const Dashboard = () => {
                         <div className="row">
                             <div className="col-md-2 bor d-none d-md-block">
                                 <ul>
-                                    <li>Male Fashion & Apparel</li>
-                                    <li>Female Fashion & Apparel</li>
-                                    <li>Beauty & Personal Care</li>
-                                    <li>Sports-wear</li>
-                                    <li>Lingerie</li>
-                                    <li>Phone & Accessories</li>
-                                    <li>Footwear</li>
-                                    <li>Books-media</li>
-                                    <li>Hand-made</li>
-                                    <li>Furniture</li>
-                                    <li>Other Category</li>
+                                    <li onClick={() => ategory("Male Fashion & Apparel")}>Male Fashion & Apparel</li>
+                                    <li onClick={() => ategory("Female Fashion & Apparel")}>Female Fashion & Apparel</li>
+                                    <li onClick={() => ategory("Beauty & Personal Care")}>Beauty & Personal Care</li>
+                                    <li onClick={() => ategory("Sports-wear")}>Sports-wear</li>
+                                    <li onClick={() => ategory("Lingerie")}>Lingerie</li>
+                                    <li onClick={() => ategory("Phone & Accessories")}>Phone & Accessories</li>
+                                    <li onClick={() => ategory("Footwear")}>Footwear</li>
+                                    <li onClick={() => ategory("Books-media")}>Books-media</li>
+                                    <li onClick={() => ategory("Hand-made")}>Hand-made</li>
+                                    <li onClick={() => ategory("Furniture")}>Furniture</li>
+                                    <li onClick={() => ategory("Other Category")}>Other Category</li>
                                 </ul>
                             </div>
                             <div className="col-md-10">

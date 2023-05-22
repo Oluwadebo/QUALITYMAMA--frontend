@@ -10,6 +10,7 @@ import Viewproduct from "./component/Viewproduct";
 import Ordered from "./component/Ordered";
 import Forgetpassword from "./component/Forgetpassword";
 import Resetpassword from "./component/Resetpassword";
+import Category from "./component/Category";
 
 function App() {
   return (
@@ -17,14 +18,15 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/Registration" element={<Registration />} />
-        <Route path="/Ordered" element={<Ordered/>} />
+        <Route path="/Ordered" element={<Ordered />} />
         <Route path="/RegistAdmin" element={<RegistAdmin />} />
         <Route path="/Addtocart" element={<Addtocart />} />
         <Route path="/Admin" element={<Admin />} />
         <Route path="/Viewproduct/:id" element={<Viewproduct />} />
-        <Route path="/Forgetpassword" element={<Forgetpassword/>} />
-        <Route path="/Resetpassword" element={<Resetpassword/>} />
-        <Route path="/Dashboard" element={<Navigate to="/" />} />
+        <Route path="/Forgetpassword" element={<Forgetpassword />} />
+        <Route path="/Resetpassword" element={<Resetpassword />} />
+        <Route path="/Category/:id" element={<Category />} />
+        <Route path="/Home" element={<Navigate to="/" />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
