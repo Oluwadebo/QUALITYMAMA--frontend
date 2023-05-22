@@ -31,6 +31,7 @@ const Admin = () => {
                     if (data) {
                         let Err = data.data.message;
                         if (Err == "Valid Token") {
+
                             setadmin(data.data.result[0]);
                             localStorage.adminId = data.data.result[0]._id
                         } else {

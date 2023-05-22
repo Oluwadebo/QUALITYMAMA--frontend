@@ -24,11 +24,23 @@ const Dashboard = () => {
     const [Carouse, setCarouse] = useState([])
 
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
         axios.get(`${baseUrl}goods`).then((data) => {
             if (data) {
                 const viewedProducts = JSON.parse(localStorage.getItem('RecentlyviewedProducts')) || [];
                 setRecentlyViewed(viewedProducts);
-                setfiles(data.data.result);
+                let bof = data.data.result;
+                let Carous = "Carouse"
+                setfiles(bof.filter(bof => bof.selectedOption !== Carous));
+                // bof.filter((id) => id !== Carouse)
+                // console.log(bof.filter(bof => bof.selectedOption !== Carous));
+                // let dat = new Date().toLocaleDateString()
+                // bof.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded))
+                // console.log(bof.sort((a, b) => new Date(a.dateAdded) - new Date(b.dateAdded)));
+                // console.log(bof.sort((a, b) => new Date(a.dateAdded).toLocaleDateString()-new Date(b.dateAdded).toLocaleDateString()));
                 let Onsale = "Onsale"
                 axios.post(`${baseUrl}onsale`, { Onsale }).then((data) => {
                     if (data) {
@@ -60,7 +72,6 @@ const Dashboard = () => {
             navigate(`/Viewproduct/${val}`)
         }
     }
-
     return (
         <>
             <Navbar />
