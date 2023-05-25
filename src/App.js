@@ -25,7 +25,7 @@ function App() {
         <Route path="/Viewproduct/:id" element={<Viewproduct />} />
         <Route path="/Forgetpassword" element={<Forgetpassword />} />
         <Route path="/Resetpassword" element={<Resetpassword />} />
-        <Route path="/Category/:id" element={<Category />} />
+        <Route path="/Category/:selectedOption" element={<Category />} />
         <Route path="/Home" element={<Navigate to="/" />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -22,7 +22,7 @@ body {
 /* .header{
   overflow: hidden;
 } */
-.bor{
+.bor {
   background-color: #2196f3;
   color: #fff;
 }
@@ -629,7 +629,7 @@ code {
 .price {
   color: grey;
 }
-.prices{
+.prices {
   color: grey;
 }
 .cards button {
@@ -664,6 +664,27 @@ code {
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
 }
-.cardsp{
+.cardsp {
   margin-bottom: 8px;
+}
+.title {
+  background-color: #2196f3;
+  color: #fff;
+  width: 300px;
+  padding: 4px 10px;
+  height: 40px;
+  margin-bottom: 30px;
+  display: flex;
+}
+.title h2 {
+  font-size: 24px;
+}
+.title::after {
+  content: "";
+  border-top: 40px solid #2196f3;
+  border-right: 50px solid transparent;
+  position: absolute;
+  display: flex;
+  margin-top: -4px;
+  margin-left: 290px;
 }

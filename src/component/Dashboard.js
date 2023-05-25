@@ -74,7 +74,6 @@ const Dashboard = () => {
     }
 
     const ategory = (vals) => {
-        // console.log(vals);
         navigate(`/Category/${vals}`)
     }
 
