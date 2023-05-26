@@ -69,7 +69,7 @@ const Footer = () => {
                             </div>
                         </div>
                         <hr />
-                        <p className="copyright text-center"> © {year} developed <i className="fa fa-heart"></i> by STACKCRAFT</p>
+                        <p className="copyright text-center">Copyright © {year} Qualitymama. All Rights Reserved</p>
                     </div>
                 </section>
             </div>
