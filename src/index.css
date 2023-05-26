@@ -692,4 +692,7 @@ code {
   .title {
     width: 100%;
   }
+  .title::after {
+    display: none;
+  }
 }

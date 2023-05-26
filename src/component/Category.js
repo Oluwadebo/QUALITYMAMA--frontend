@@ -65,7 +65,7 @@ const Category = () => {
                                     <p>{Error}</p>
                                 </center>
                                 {files.map((item, index) => (
-                                    <div className="col-md-3 col-5">
+                                    <div className="col-md-3 col-6">
                                         <div className="cards scal" onClick={() => viewproduct(item._id)}>
                                             <img className="product--image" src={item.file} alt="product image" />
                                             <div className="cardsp py-1">

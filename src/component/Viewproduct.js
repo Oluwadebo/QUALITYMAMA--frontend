@@ -64,7 +64,6 @@ const Viewproduct = () => {
                 const updatedRecentlyViewedProducts = [vad, ...recentlyViewed.filter((id) => id !== vad)].slice(0, 9);
                 localStorage.setItem('RecentlyviewedProducts', JSON.stringify(updatedRecentlyViewedProducts));
                 setRecentlyViewed(updatedRecentlyViewedProducts);
-                // window.location.reload()
             } else {
                 navigate("/")
             }
