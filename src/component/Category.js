@@ -24,20 +24,22 @@ const Category = () => {
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" })
+        setError("")
+        setfiles([])
         if (va.selectedOption) {
             axios.get(`${baseUrl}goods`).then((data) => {
                 if (data) {
                     let bof = data.data.result;
                     let seen = bof.filter(bof => bof.selectedOption == cat);
                     if (seen != "") {
-                        setfiles(seen);                        
-                    }else{
+                        setfiles(seen);
+                    } else {
                         setError("No Product for this Categories")
                     }
                 }
             })
         }
-    }, [])
+    }, [va])
 
     const viewproduct = (val) => {
         if (val) {
@@ -63,7 +65,7 @@ const Category = () => {
                                     <p>{Error}</p>
                                 </center>
                                 {files.map((item, index) => (
-                                    <div className="col-3">
+                                    <div className="col-md-3 col-5">
                                         <div className="cards scal" onClick={() => viewproduct(item._id)}>
                                             <img className="product--image" src={item.file} alt="product image" />
                                             <div className="cardsp py-1">

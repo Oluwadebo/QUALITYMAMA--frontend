@@ -104,7 +104,7 @@ const Dashboard = () => {
                                     <div className="carousel-inner">
                                         <div className="row">
                                             {Carouse.map((item, index) => (
-                                                <div className="carousel-item active" data-bs-interval="2000">
+                                                <div className="carousel-item active" data-bs-interval="20000">
                                                     <div className="imggi">
                                                         <img src={item.file} className="w-100" alt="..." />
                                                     </div>

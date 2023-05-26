@@ -78,7 +78,6 @@ const Navbar = () => {
                                 <img src={logo} alt="amaricanexpress" className="logo" />
                             </a>
                         </Link>
-
                         <button
                             className="navbar-toggler"
                             type="button"
